@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Watch Store</title>
+     <!-- Bootstrap CSS -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+     <!-- Font Awesome -->
+     <script src="https://kit.fontawesome.com/b755c6ef44.js" crossorigin="anonymous"></script>
+
+     <!-- Google Fonts -->
+     <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+     <!-- css link-->
+     <link rel="stylesheet" href="{{url_for('static' ,filename ='css/style.css')}}">
+     <style>
+          body {
+               background-color: #1a1a1a;
+          }
+
+          .Btn {
+               width: 140px;
+               height: 40px;
+               border: none;
+               border-radius: 10px;
+               background: linear-gradient(to right, #77530a, #ffd277, #77530a, #77530a, #ffd277, #77530a);
+               background-size: 250%;
+               background-position: left;
+               color: #ffd277;
+               position: relative;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               cursor: pointer;
+               transition-duration: 1s;
+               overflow: hidden;
+          }
+
+          .Btn::before {
+               position: absolute;
+               content: "EXPLORE";
+               color: #ffd277;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               width: 97%;
+               height: 90%;
+               border-radius: 8px;
+               transition-duration: 1s;
+               background-color: rgba(0, 0, 0, 0.842);
+               background-size: 200%;
+          }
+
+          .Btn:hover {
+               background-position: right;
+               transition-duration: 1s;
+          }
+
+          .Btn:hover::before {
+               background-position: right;
+               transition-duration: 1s;
+          }
+
+          .Btn:active {
+               transform: scale(0.95);
+          }
+
+
+          .testimonial-section {
+               background: #1a1a1a;
+          }
+
+          .testimonial-section h2 {
+               color: #ffd700;
+          }
+
+          .testimonial-section .carousel-control-prev-icon,
+          .testimonial-section .carousel-control-next-icon {
+               background-color: rgba(255, 255, 255, 0.8);
+               border-radius: 50%;
+          }
+
+          .testimonial-section .rounded-circle {
+               border: 3px solid #ffd700;
+          }
+
+          .testimonial-section p {
+               font-size: 1rem;
+               line-height: 1.5;
+          }
+
+          .trust-delivery-section {
+               background: #1a1a1a;
+          }
+
+          .card {
+               border: none;
+               border-radius: 10px;
+               transition: transform 0.3s ease, box-shadow 0.3s ease;
+          }
+
+          .card:hover {
+               transform: translateY(-10px);
+               box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+          }
+
+          .card .card-title {
+               font-family: 'Merriweather Sans', sans-serif;
+               font-weight: 700;
+          }
+
+          .card .card-text {
+               font-size: 0.95rem;
+               line-height: 1.5;
+          }
+
+          .card i {
+               display: inline-block;
+               margin-bottom: 15px;
+          }
+
+
+          /* From Uiverse.io by alexmaracinaru */
+          .cta {
+               position: relative;
+               margin: auto;
+               padding: 12px 18px;
+               transition: all 0.2s ease;
+               border: none;
+               background: none;
+               cursor: pointer;
+          }
+
+          .cta:before {
+               content: "";
+               position: absolute;
+               top: 0;
+               left: 0;
+               display: block;
+               border-radius: 50px;
+               background: #ffd277;
+               width: 45px;
+               height: 45px;
+               transition: all 0.3s ease;
+          }
+
+          .cta span {
+               position: relative;
+               font-family: "Ubuntu", sans-serif;
+               font-size: 18px;
+               font-weight: 700;
+               letter-spacing: 0.05em;
+               color: #fff;
+          }
+
+          .cta svg {
+               position: relative;
+               top: 0;
+               margin-left: 10px;
+               fill: none;
+               stroke-linecap: round;
+               stroke-linejoin: round;
+               stroke: #ffd277;
+               stroke-width: 2;
+               transform: translateX(-5px);
+               transition: all 0.3s ease;
+          }
+
+          .cta:hover:before {
+               width: 100%;
+               background: #ffd277;
+          }
+
+          .cta:hover svg {
+               transform: translateX(0);
+          }
+
+          .cta:active {
+               transform: scale(0.95);
+          }
+     </style>
+</head>
+
+<body style="background-color: #1a1a1a;">
+     <!-- navbar -->
+     <nav class="navbar navbar-expand-lg navbar-dark">
+          <div class="container-fluid">
+               <a class="navbar-brand" href="#">WatchStore</a>
+               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                         <li class="nav-item">
+                              <a class="nav-link" href="/">Home</a>
+                         </li>
+                         <li class="nav-item">
+                              <a class="nav-link" href="/about_us/">About Us</a>
+                         </li>
+                         <li class="nav-item">
+                              <a class="nav-link" href="/show_product/">Products</a>
+                         </li>
+                         <li class="nav-item">
+                              <a class="nav-link" href="/blogs/">Blog</a>
+                         </li>
+                         <li class="nav-item">
+                              <a class="nav-link" href="/login/">Account</a>
+                         </li>
+                         {% if username %}
+                         <li class="nav-item">
+                              <a class="nav-link" href="/logout/">Logout</a>
+                         </li>
+                         {% endif %}
+                    </ul>
+               </div>
+               <div class="d-flex align-items-center">
+                    <i class="fa-solid fa-cart-shopping cart-icon"></i>
+                    {% if username %}
+                    <p class="user-greeting">Hi {{username}}!</p>
+                    {% endif %}
+               </div>
+          </div>
+     </nav>
+
+
+
+
+     <!-- banner -->
+     <div class="container">
+          <div class="row mt-4">
+               <div class="col">
+                    <h4 class="display-3 mt-3" style="color: #F9F9F9;">Smart Time <br>For Smart Kid</h4>
+                    <p class="mt-3" style="color: #e2c044;">Every watch has a sole and a story to be told.</p>
+                    <p class="mt-4" style="color:#e2dada;">" The World's first circular program for watches. Let's keep
+                         watches on wrists and out of landfills.Send us back any watch from any brand and we'll
+                         responsibly recycle it and keep its legacy going. "</p>
+                    <a href="/show_product/"><button class="Btn mt-4"></button></a>
+               </div>
+               <div class="col">
+                    <img src="{{url_for('static', filename='img/banner.png')}}" alt="portrait banner"
+                         style="width: 100%; height: 100%; object-fit: cover;">
+               </div>
+          </div>
+     </div>
+
+    
+
+     <!-- Trust and Fast Delivery Section -->
+     <section class="trust-delivery-section py-5">
+          <div class="container">
+               <h2 class="text-center mb-4 display-6" style="color: #e2c044;">Policies</h2>
+               <div class="row text-center">
+                    <div class="col-md-6 mb-3">
+                         <!-- Trust and Certification -->
+                         <div class="card trust-card bg-dark text-light p-4 h-100">
+                              <div class="card-body">
+                                   <i class="fas fa-shield-alt fa-3x text-warning mb-3"></i>
+                                   <h5 class="card-title" style="color: #e2c044;">Trust and Certification</h5>
+                                   <p class="card-text">We are certified by international standards ensuring the quality
+                                        and authenticity of every product we offer. Shop with confidence at Watch Store.
+                                   </p>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                         <!-- Fast Delivery -->
+                         <div class="card delivery-card bg-dark text-light p-4 h-100">
+                              <div class="card-body">
+                                   <i class="fas fa-truck fa-3x text-warning mb-3"></i>
+                                   <h5 class="card-title" style="color: #e2c044;">Fast Delivery</h5>
+                                   <p class="card-text">Enjoy express delivery services across the globe. Get your
+                                        favorite timepiece delivered right to your doorstep in record time.</p>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </section>
+
+
+     <!-- banner new arrivals  -->
+     <div class="container" >
+          <div class="row mt-4">
+               <div class="col mt-5">
+                    <a href="/show_product/">
+                         <button class="cta">
+                              <span>New Arrivals</span>
+                              <svg width="15px" height="10px" viewBox="0 0 13 10">
+                                   <path d="M1,5 L11,5"></path>
+                                   <polyline points="8 1 12 5 8 9"></polyline>
+                              </svg>
+                         </button>
+                    </a>
+                    <h2 class="mt-5 display-6" style="color: #e2dada;">
+                         Best sellers <br> TopNotch Quality <br> Most Popular <br> Luxury <br>Hottest Brands
+                    </h2>
+               </div>
+               <div class="col">
+                    <img src="{{url_for('static', filename='img/neww.png')}}" alt="portrait banner"
+                         style="width: 100%; height: 80%; object-fit: cover;">
+               </div>
+          </div>
+     </div>
+
+     <!-- Testimonial Section -->
+     <section class="testimonial-section text-light py-5" >
+          <div class="container">
+               <h2 class="text-center mb-4">What Our Customers Say</h2>
+               <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                         <!-- Testimonial Item 1 -->
+                         <div class="carousel-item active">
+                              <div class="row justify-content-center">
+                                   <div class="col-md-6 text-center">
+                                        <img src="{{url_for('static' ,filename ='img/customer1.png')}}"
+                                             class="rounded-circle mb-3" alt="Customer 1" width="100" height="100">
+                                        <h5 class="fw-bold">Farhat Aara</h5>
+                                        <p class="text-warning">
+                                             <i class="fas fa-star"></i>
+                                             <i class="fas fa-star"></i>
+                                             <i class="fas fa-star"></i>
+                                             <i class="fas fa-star"></i>
+                                             <i class="fas fa-star-half-alt"></i>
+                                        </p>
+                                        <p>"Absolutely love the watches! Exceptional quality and fast delivery. Highly
+                                             recommend."</p>
+                                   </div>
+                              </div>
+                         </div>
+                         <!-- Testimonial Item 2 -->
+                         <div class="carousel-item">
+                              <div class="row justify-content-center">
+                                   <div class="col-md-6 text-center">
+                                        <img src="{{url_for('static' ,filename ='img/customer2.png')}}"
+                                             class="rounded-circle mb-3" alt="Customer 2" width="100" height="100">
+                                        <h5 class="fw-bold">Jane Smith</h5>
+                                        <p class="text-warning">
+                                             <i class="fas fa-star"></i>
+                                             <i class="fas fa-star"></i>
+                                             <i class="fas fa-star"></i>
+                                             <i class="fas fa-star"></i>
+                                             <i class="fas fa-star"></i>
+                                        </p>
+                                        <p>"WatchStore has the best collection ever! Their recycling initiative is
+                                             amazing."</p>
+                                   </div>
+                              </div>
+                         </div>
+                         <!-- Testimonial Item 3 -->
+                         <div class="carousel-item">
+                              <div class="row justify-content-center">
+                                   <div class="col-md-6 text-center">
+                                        <img src="{{url_for('static' ,filename ='img/customer3.png')}}"
+                                             class="rounded-circle mb-3" alt="Customer 3" width="100" height="100">
+                                        <h5 class="fw-bold">Yasmin</h5>
+                                        <p class="text-warning">
+                                             <i class="fas fa-star"></i>
+                                             <i class="fas fa-star"></i>
+                                             <i class="fas fa-star"></i>
+                                             <i class="fas fa-star"></i>
+                                             <i class="fas fa-star-half-alt"></i>
+                                        </p>
+                                        <p>"Great customer service and the watches are worth every penny. Will buy
+                                             again!"</p>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+                    <!-- Carousel Controls -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
+                         data-bs-slide="prev">
+                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                         <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel"
+                         data-bs-slide="next">
+                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                         <span class="visually-hidden">Next</span>
+                    </button>
+               </div>
+          </div>
+     </section>
+
+
+     <!-- banner -->
+     <h2 class="text-center mb-4 mt-4" style="color: #e2c044; font-weight:bold">Featured Products</h2>
+
+     <a href="/show_product/"><img 
+          src="{{ url_for('static', filename='img/indexBanner.png') }}" 
+          alt="About Us Banner" 
+          class="img-fluid rounded shadow" 
+          style="width: 100%; height: 100%; object-fit: cover;"></a>
+     
+
+
+
+
+     <!-- footer -->
+     <footer class="bg-dark text-light pt-5 pb-3" style="background-color: #161212;">
+          <div class="container">
+               <div class="row">
+                    <!-- About Section -->
+                    <div class="col-md-4">
+                         <h5 class="text-uppercase mb-4" style="color: #e2c044;">About Us</h5>
+                         <p>
+                              Welcome to Watch Store, your ultimate destination for luxury and stylish timepieces.
+                              Explore our exclusive collection and find the perfect watch to complement your style.
+                         </p>
+                    </div>
+                    <!-- Quick Links Section -->
+                    <div class="col-md-4">
+                         <h5 class="text-uppercase mb-4" style="color: #e2c044;">Quick Links</h5>
+                         <ul class="list-unstyled">
+                              <li><a href="/" class="text-light text-decoration-none"><i
+                                             class="fas fa-angle-right me-2"></i>Home</a></li>
+                              <li><a href="/about" class="text-light text-decoration-none"><i
+                                             class="fas fa-angle-right me-2"></i>About Us</a></li>
+                              <li><a href="/show_product/" class="text-light text-decoration-none"><i
+                                             class="fas fa-angle-right me-2"></i>Products</a></li>
+                              <li><a href="/blog" class="text-light text-decoration-none"><i
+                                             class="fas fa-angle-right me-2"></i>Blog</a></li>
+                              <li><a href="/contact" class="text-light text-decoration-none"><i
+                                             class="fas fa-angle-right me-2"></i>Contact Us</a></li>
+                         </ul>
+                    </div>
+                    <!-- Contact Section -->
+                    <div class="col-md-4">
+                         <h5 class="text-uppercase mb-4" style="color: #e2c044;">Contact Us</h5>
+                         <p><i class="fas fa-map-marker-alt me-2"></i>123 Watch Avenue, New York, NY</p>
+                         <p><i class="fas fa-phone me-2"></i>+1 234 567 890</p>
+                         <p><i class="fas fa-envelope me-2"></i>info@watchstore.com</p>
+                         <div class="social-icons mt-3">
+                              <a href="#" class="text-light me-3"><i class="fab fa-facebook-f"></i></a>
+                              <a href="#" class="text-light me-3"><i class="fab fa-twitter"></i></a>
+                              <a href="#" class="text-light me-3"><i class="fab fa-instagram"></i></a>
+                              <a href="#" class="text-light"><i class="fab fa-linkedin-in"></i></a>
+                         </div>
+                    </div>
+               </div>
+               <hr class="text-light">
+               <div class="text-center">
+                    <p class="mb-0">&copy; 2025 Watch Store. All Rights Reserved.</p>
+               </div>
+          </div>
+     </footer>
+
+
+     <!-- Bootstrap JS -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+
+          </script>
+</body>
+
+</html>
