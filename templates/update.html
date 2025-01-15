@@ -77,6 +77,7 @@
                background-color: #d1a136;
                color: #1a1a1a;
           }
+
           img {
                width: 100%;
                border-radius: 15px;
@@ -119,7 +120,7 @@
                     </ul>
                </div>
                <div class="d-flex align-items-center">
-                    <a href="/cart/"><i class="fa-solid fa-cart-shopping cart-icon"></i></a>
+                    <i class="fa-solid fa-cart-shopping cart-icon"></i>
                     {% if username %}
                     <p class="user-greeting">Hi {{username}}!</p>
                     {% endif %}
@@ -142,12 +143,12 @@
                     <div class="card border-0 shadow-lg">
                          <!-- Card Header -->
                          <div class="card-header text-center" style="background-color: #003566; color: #e2c044;">
-                              <h4 class="mb-0">ADD NEW PRODUCT</h4>
+                              <h4 class="mb-0">Update PRODUCT</h4>
                          </div>
 
                          <!-- Card Body -->
                          <div class="card-body" style="background-color: #1a1a1a; color: #e2c044;">
-                              <form action="{{ url_for('add_product') }}" method="POST" enctype="multipart/form-data">
+                              <form action="/Updateddata/{{mydata.id}}" method="POST" enctype="multipart/form-data">
                                    <!-- Success or Error Message -->
                                    {% if success %}
                                    <div class="alert alert-success">
@@ -163,58 +164,107 @@
                                    <div class="mb-3">
                                         <label for="productName" class="form-label">Product Name</label>
                                         <input type="text" class="form-control" id="productName"
-                                             placeholder="Enter product name" name="pname" required>
+                                             placeholder="Enter product name" name="pname" required
+                                             value="{{mydata.productname}}">
                                    </div>
 
                                    <!-- Product Description -->
                                    <div class="mb-3">
                                         <label for="productDescription" class="form-label">Product Description</label>
                                         <textarea class="form-control" id="productDescription" rows="4"
-                                             placeholder="Enter product description" name="desc" required></textarea>
+                                             placeholder="Enter product description" name="desc"
+                                             required>{{mydata.productDesc}}</textarea>
                                    </div>
 
                                    <!-- Product Price -->
                                    <div class="mb-3">
                                         <label for="productPrice" class="form-label">Price (₹)</label>
                                         <input type="number" class="form-control" id="productPrice"
-                                             placeholder="Enter product price" name="pprice" required>
+                                             placeholder="Enter product price" name="pprice" required
+                                             value="{{mydata.productPrice}}">
                                    </div>
 
+                                   
                                    <!-- Product Image -->
                                    <div class="mb-3">
                                         <label for="productImage" class="form-label">Upload Image 1</label>
+
+                                        <!-- Display the pre-existing image -->
+                                        {% if mydata.img1 %}
+                                        <div>
+                                             <p>Current Image: {{ mydata.img1 }}</p>
+                                        </div>
+                                        {% endif %}
+
+                                        <!-- Input field for file upload (without pre-set value) -->
                                         <input class="form-control" type="file" id="productImage" accept="image/*"
-                                             name="img1" required>
+                                             name="img1">
                                    </div>
 
                                    <div class="mb-3">
                                         <label for="productImage" class="form-label">Upload Image 2</label>
+
+                                        <!-- Display the pre-existing image -->
+                                        {% if mydata.img2 %}
+                                        <div>
+                                             <p>Current Image: {{ mydata.img2 }}</p>
+                                        </div>
+                                        {% endif %}
+
+                                        <!-- Input field for file upload (without pre-set value) -->
                                         <input class="form-control" type="file" id="productImage" accept="image/*"
-                                             name="img2" required>
+                                             name="img2">
                                    </div>
 
                                    <div class="mb-3">
                                         <label for="productImage" class="form-label">Upload Image 3</label>
+
+                                        <!-- Display the pre-existing image -->
+                                        {% if mydata.img3 %}
+                                        <div>
+                                             <p>Current Image: {{ mydata.img3 }}</p>
+                                        </div>
+                                        {% endif %}
+
+                                        <!-- Input field for file upload (without pre-set value) -->
                                         <input class="form-control" type="file" id="productImage" accept="image/*"
-                                             name="img3" required>
+                                             name="img3">
                                    </div>
 
                                    <div class="mb-3">
                                         <label for="productImage" class="form-label">Upload Image 4</label>
+
+                                        <!-- Display the pre-existing image -->
+                                        {% if mydata.img1 %}
+                                        <div>
+                                             <p>Current Image: {{ mydata.img4 }}</p>
+                                        </div>
+                                        {% endif %}
+
+                                        <!-- Input field for file upload (without pre-set value) -->
                                         <input class="form-control" type="file" id="productImage" accept="image/*"
-                                             name="img4" required>
+                                             name="img4">
                                    </div>
 
                                    <div class="mb-3">
                                         <label for="productImage" class="form-label">Upload Image 5</label>
+
+                                        <!-- Display the pre-existing image -->
+                                        {% if mydata.img5 %}
+                                        <div>
+                                             <p>Current Image: {{ mydata.img5 }}</p>
+                                        </div>
+                                        {% endif %}
+
+                                        <!-- Input field for file upload (without pre-set value) -->
                                         <input class="form-control" type="file" id="productImage" accept="image/*"
-                                             name="img5" required>
+                                             name="img5">
                                    </div>
 
                                    <!-- Submit Button -->
                                    <div class="text-center">
                                         <button type="submit" class="btn btn-warning w-100" style="color: #003566;">
-                                             Add Product
+                                             Update Product
                                         </button>
                                    </div>
                               </form>

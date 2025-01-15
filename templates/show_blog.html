@@ -68,7 +68,7 @@
                     </ul>
                </div>
                <div class="d-flex align-items-center">
-                    <i class="fa-solid fa-cart-shopping cart-icon"></i>
+                    <a href="/cart/"><i class="fa-solid fa-cart-shopping cart-icon"></i></a>
                     {% if username %}
                     <p class="user-greeting">Hi {{username}}!</p>
                     {% endif %}
@@ -102,9 +102,19 @@
                          <div class="card-body text-center" style="background-color: #fdf8f6; padding: 20px;">
                               <h5 class="card-title" style="color: #ecbb0b; font-weight: bold;">{{ i.blogtitle }}</h5>
                               <p class="card-text text-muted" style="font-size: 14px;">{{ i.blogDesc }}</p>
+
+                              {% if role != 'admin'%}
                               <a href="{{ i.url }}" class="btn btn-sm text-white"
-                                   style="background-color: #ecba07; border-radius: 20px; font-weight: 600;">Read
-                                   More</a>
+                              style="background-color: #ecba07; border-radius: 20px; font-weight: 600;">Read More</a>
+                              {% endif %}
+
+                              {% if role == 'admin'%}
+                              <a href="/upblog/{{i.id}}" class="btn btn-sm text-white"
+                              style="background-color: #ecba07; border-radius: 20px; font-weight: 600;">Update Blog</a>
+
+                              <a href="/deleted/{{i.id}}" class="btn btn-sm text-white btn-danger"
+                              style=" border-radius: 20px; font-weight: 600;">Delete Blog</a>
+                              {% endif %}
                          </div>
                     </div>
                </div>

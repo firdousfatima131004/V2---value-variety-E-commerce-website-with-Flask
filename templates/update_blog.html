@@ -17,31 +17,55 @@
 
      <!-- css link-->
      <link rel="stylesheet" href="{{url_for('static' ,filename ='css/style.css')}}">
-
+     
      <style>
+
+          .container {
+              padding: 5rem 0;
+          }
           .card {
-               transition: transform 0.2s ease, box-shadow 0.2s ease;
-               background-color: rgb(213, 206, 206);
-               border-radius: 10px;
+              border-radius: 12px;
+              background-color: #2c2c2c;
           }
-
-          .card:hover {
-               transform: scale(1.05);
-               box-shadow: 0 4px 10px #e2c044;
+          .card-header {
+              background-color: #e2c044;
+              color: #fff;
           }
-
+          .form-label {
+              color: #fff;
+          }
+          .form-control {
+              background-color: #333;
+              border: none;
+              color: #fff;
+          }
+          .form-control:focus {
+              background-color: #444;
+              box-shadow: 0 0 10px rgba(226, 192, 68, 0.5);
+          }
           .btn-primary {
-               background-color: #e2c044;
-               border-color: #e2c044;
+              background-color: #e2c044;
+              border: none;
+              color: #1a1a1a;
+              transition: background-color 0.3s ease;
           }
-
           .btn-primary:hover {
-               background-color: #e2c044;
-               border-color: #e2c044;
+              background-color: #d1a038;
           }
-
-          .text-primary {
-               color: #e2c044 !important;
+          .text-center {
+              text-align: center;
+          }
+          .mb-3 {
+              margin-bottom: 1rem;
+          }
+          .mb-4 {
+              margin-bottom: 2rem;
+          }
+          .shadow-sm {
+              box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          }
+          .border-0 {
+              border: none;
           }
      </style>
 </head>
@@ -90,78 +114,68 @@
      </nav>
 
 
-     <!-- admin content -->
+     <!-- Add blog Form -->
      <div class="container py-5">
-          <div class="row g-4">
-               <!-- Add Products -->
-               <div class="col-md-4">
-                    <div class="card text-center border-0 shadow-sm">
-                         <div class="card-body">
-                              <i class="fa-solid fa-clock fa-2x text-primary"></i>
-                              <h5 class="card-title mt-3">Add Products</h5>
-                              <a href="/addProduct/"><button type="submit" class="btn btn-primary mt-2">Add Products</button></a>
-                         </div>
-                    </div>
-               </div>
+          <div class="row justify-content-center">
+              <div class="col-lg-6">
+                  <div class="card border-0 shadow-sm">
+                      <div class="card-header text-center text-white" style="color: #e2c044;">
+                          <h4>Update Blog</h4>
+                      </div>
+                      <div class="card-body">
+                          <form action="/Updblog/{{mydata.id}}" method="POST" enctype="multipart/form-data">
+      
+                              {% if success %}
+                              <div class="text" style="border: 1px solid green; color:green">
+                                  <strong>{{ success }}</strong>
+                              </div>
+                              {% else %}
+                              <div class="text" style="border: 1px solid red; color:red;">
+                                  <strong>{{ error }}</strong>
+                              </div>
+                              {% endif %}
+      
+                              <div class="mb-3">
+                                  <label for="blogTitle" class="form-label">Blog Title</label>
+                                  <input type="text" class="form-control" id="blogTitle" placeholder="Enter blog title" name="btitle" value="{{mydata.blogtitle}}" required>
+                              </div>
+      
+                              <div class="mb-3">
+                                  <label for="blogDescription" class="form-label">Blog Description</label>
+                                  <textarea class="form-control" id="blogDescription" rows="4" placeholder="Enter blog description" name="bdesc" required>{{mydata.blogDesc}}</textarea>
+                              </div>
+      
+                              <div class="mb-3">
+                                   <label for="productImage" class="form-label">Upload Image</label>
 
-               <!-- View Products -->
-               <div class="col-md-4">
-                    <div class="card text-center border-0 shadow-sm">
-                         <div class="card-body">
-                              <i class="fa-solid fa-eye fa-2x text-primary"></i>
-                              <h5 class="card-title mt-3">View Products</h5>
-                              <a href="/show_product/"><button type="submit" class="btn btn-primary mt-2">View Products</button></a> 
-                         </div>
-                    </div>
-               </div>
+                                   <!-- Display the pre-existing image -->
+                                   {% if mydata.bimg %}
+                                   <div>
+                                        <p style="color: aliceblue;">Current Image: {{ mydata.bimg }}</p>
+                                   </div>
+                                   {% endif %}
 
-               <!-- Product Analytics -->
-               <div class="col-md-4">
-                    <div class="card text-center border-0 shadow-sm">
-                         <div class="card-body">
-                              <i class="fa-solid fa-chart-line fa-2x text-primary"></i>
-                              <h5 class="card-title mt-3">Product Analytics</h5>
-                              <a href="/analytics/plot.png"><button type="submit" class="btn btn-primary mt-2">Product Analytics</button></a>
-                         </div>
-                    </div>
-               </div>
-          </div>
-
-          <div class="row g-4 mt-4">
-               <!-- User -->
-               <div class="col-md-4">
-                    <div class="card text-center border-0 shadow-sm">
-                         <div class="card-body">
-                              <i class="fa-solid fa-users fa-2x text-primary"></i>
-                              <h5 class="card-title mt-3">User</h5>
-                              <a href="/view_user/"><button type="submit" class="btn btn-primary mt-2">User</button></a>
-                         </div>
-                    </div>
-               </div>
-
-               <!-- Add Blog -->
-               <div class="col-md-4">
-                    <div class="card text-center border-0 shadow-sm">
-                         <div class="card-body">
-                              <i class="fa-solid fa-comment-dots fa-2x text-primary"></i>
-                              <h5 class="card-title mt-3">Add Blog</h5>
-                              <a href="/blog/"><button type="submit" class="btn btn-primary mt-2">Add Blog</button></a>
-                         </div>
-                    </div>
-               </div>
-
-               <!-- User Analytics -->
-               <div class="col-md-4">
-                    <div class="card text-center border-0 shadow-sm">
-                         <div class="card-body">
-                              <i class="fa-solid fa-chart-simple fa-2x text-primary"></i>
-                              <h5 class="card-title mt-3">User Analytics</h5>
-                              <button type="submit" class="btn btn-primary mt-2">User Analytics</button>
-                         </div>
-                    </div>
-               </div>
+                                   <!-- Input field for file upload (without pre-set value) -->
+                                   <input class="form-control" type="file" id="productImage" accept="image/*"
+                                        name="img">
+                              </div>
+      
+                              <div class="mb-3">
+                                  <label for="url" class="form-label">Enter URL</label>
+                                  <input type="url" class="form-control" id="url" placeholder="Enter URL for read more" name="url" value="{{mydata.url}}" required>
+                              </div>
+      
+                              <div class="text-center">
+                                  <button type="submit" class="btn btn-primary w-100">update Blog</button>
+                              </div>
+      
+                          </form>
+                      </div>
+                  </div>
+              </div>
           </div>
      </div>
+
 
 
      <!-- footer -->

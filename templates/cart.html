@@ -186,8 +186,8 @@
 </head>
 
 <body style="background-color: #1a1a1a;">
-     <!-- navbar -->
-     <nav class="navbar navbar-expand-lg navbar-dark">
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
           <div class="container-fluid">
                <a class="navbar-brand" href="#">WatchStore</a>
                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -225,183 +225,54 @@
                     {% endif %}
                </div>
           </div>
-     </nav>
+    </nav>
 
 
-
-
-     <!-- banner -->
-     <div class="container">
-          <div class="row mt-4">
-               <div class="col-md-6">
-                    <h4 class="display-3 mt-3" style="color: #F9F9F9;">Smart Time <br>For Smart Kid</h4>
-                    <p class="mt-3" style="color: #e2c044;">Every watch has a sole and a story to be told.</p>
-                    <p class="mt-4" style="color:#e2dada;">" The World's first circular program for watches. Let's keep
-                         watches on wrists and out of landfills.Send us back any watch from any brand and we'll
-                         responsibly recycle it and keep its legacy going. "</p>
-                    <a href="/show_product/"><button class="Btn mt-4"></button></a>
-               </div>
-               <div class="col-md-6">
-                    <img src="{{url_for('static', filename='img/banner.png')}}" alt="portrait banner"
-                         style="width: 100%; height: 100%; object-fit: cover;">
-               </div>
-          </div>
-     </div>
-
+    <!-- cart -->
+    <section style="background-color: #121212; color: #fff; padding: 20px; border-radius: 10px;">
+        <h2 style="text-align: center; font-family: 'Arial', sans-serif; margin-bottom: 20px; font-size: 28px; color: #FFD700;">Your Cart</h2>
+        <table style="width: 100%; border-collapse: collapse; text-align: left; margin-bottom: 20px;">
+            <thead>
+                <tr style="background-color: #1c1c1c; border-bottom: 2px solid #FFD700;">
+                    <th style="padding: 15px; font-weight: bold;">Product</th>
+                    <th style="padding: 15px; font-weight: bold;">Price</th>
+                    <th style="padding: 15px; font-weight: bold;">Quantity</th>
+                    <th style="padding: 15px; font-weight: bold;">Subtotal</th>
+                    <th style="padding: 15px; font-weight: bold;">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart_items %}
+                <tr style="border-bottom: 1px solid #333;">
+                    <td style="padding: 15px;">{{ item.product.productname }}</td>
+                    <td style="padding: 15px;">${{ item.product.productPrice }}</td>
+                    <td style="padding: 15px;">
+                        <form action="{{ url_for('update_quantity', item_id=item.id) }}" method="POST" style="display: flex; align-items: center; gap: 5px;">
+                            <input type="number" name="quantity" value="{{ item.quantity }}" min="1" style="width: 50px; padding: 5px; text-align: center; border: 1px solid #333; border-radius: 5px; background-color: #1c1c1c; color: #fff;">
+                            <button type="submit" style="background-color: #FFD700; color: #121212; border: none; padding: 5px 8px; border-radius: 5px; cursor: pointer; font-weight: bold;">Update</button>
+                        </form>
+                    </td>
+                    <td style="padding: 15px;">${{ item.product.productPrice * item.quantity }}</td>
+                    <td style="padding: 15px;">
+                        <form action="{{ url_for('remove_from_cart', item_id=item.id) }}" method="POST" style="display: inline;">
+                            <button type="submit" style="background-color: #FFD700; color: #121212; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-weight: bold;">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p style="text-align: right; font-size: 20px; font-weight: bold;">Total: ${{ total }}</p>
+    </section>
+    
     
 
-     <!-- Trust and Fast Delivery Section -->
-     <section class="trust-delivery-section py-5">
-          <div class="container">
-               <h2 class="text-center mb-4 display-6" style="color: #e2c044;">Policies</h2>
-               <div class="row text-center">
-                    <div class="col-md-6 mb-3">
-                         <!-- Trust and Certification -->
-                         <div class="card trust-card bg-dark text-light p-4 h-100">
-                              <div class="card-body">
-                                   <i class="fas fa-shield-alt fa-3x text-warning mb-3"></i>
-                                   <h5 class="card-title" style="color: #e2c044;">Trust and Certification</h5>
-                                   <p class="card-text">We are certified by international standards ensuring the quality
-                                        and authenticity of every product we offer. Shop with confidence at Watch Store.
-                                   </p>
-                              </div>
-                         </div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                         <!-- Fast Delivery -->
-                         <div class="card delivery-card bg-dark text-light p-4 h-100">
-                              <div class="card-body">
-                                   <i class="fas fa-truck fa-3x text-warning mb-3"></i>
-                                   <h5 class="card-title" style="color: #e2c044;">Fast Delivery</h5>
-                                   <p class="card-text">Enjoy express delivery services across the globe. Get your
-                                        favorite timepiece delivered right to your doorstep in record time.</p>
-                              </div>
-                         </div>
-                    </div>
-               </div>
-          </div>
-     </section>
 
 
-     <!-- banner new arrivals  -->
-     <div class="container" >
-          <div class="row mt-4">
-               <div class="col-md-6 mt-5">
-                    <a href="/show_product/">
-                         <button class="cta">
-                              <span>New Arrivals</span>
-                              <svg width="15px" height="10px" viewBox="0 0 13 10">
-                                   <path d="M1,5 L11,5"></path>
-                                   <polyline points="8 1 12 5 8 9"></polyline>
-                              </svg>
-                         </button>
-                    </a>
-                    <h2 class="mt-5 display-6" style="color: #e2dada;">
-                         Best sellers <br> TopNotch Quality <br> Most Popular <br> Luxury <br>Hottest Brands
-                    </h2>
-               </div>
-               <div class="col-md-6">
-                    <img src="{{url_for('static', filename='img/neww.png')}}" alt="portrait banner"
-                         style="width: 100%; height: 80%; object-fit: cover;">
-               </div>
-          </div>
-     </div>
 
-     <!-- Testimonial Section -->
-     <section class="testimonial-section text-light py-5" >
-          <div class="container">
-               <h2 class="text-center mb-4">What Our Customers Say</h2>
-               <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                         <!-- Testimonial Item 1 -->
-                         <div class="carousel-item active">
-                              <div class="row justify-content-center">
-                                   <div class="col-md-6 text-center">
-                                        <img src="{{url_for('static' ,filename ='img/customer1.png')}}"
-                                             class="rounded-circle mb-3" alt="Customer 1" width="100" height="100">
-                                        <h5 class="fw-bold">Farhat Aara</h5>
-                                        <p class="text-warning">
-                                             <i class="fas fa-star"></i>
-                                             <i class="fas fa-star"></i>
-                                             <i class="fas fa-star"></i>
-                                             <i class="fas fa-star"></i>
-                                             <i class="fas fa-star-half-alt"></i>
-                                        </p>
-                                        <p>"Absolutely love the watches! Exceptional quality and fast delivery. Highly
-                                             recommend."</p>
-                                   </div>
-                              </div>
-                         </div>
-                         <!-- Testimonial Item 2 -->
-                         <div class="carousel-item">
-                              <div class="row justify-content-center">
-                                   <div class="col-md-6 text-center">
-                                        <img src="{{url_for('static' ,filename ='img/customer2.png')}}"
-                                             class="rounded-circle mb-3" alt="Customer 2" width="100" height="100">
-                                        <h5 class="fw-bold">Jane Smith</h5>
-                                        <p class="text-warning">
-                                             <i class="fas fa-star"></i>
-                                             <i class="fas fa-star"></i>
-                                             <i class="fas fa-star"></i>
-                                             <i class="fas fa-star"></i>
-                                             <i class="fas fa-star"></i>
-                                        </p>
-                                        <p>"WatchStore has the best collection ever! Their recycling initiative is
-                                             amazing."</p>
-                                   </div>
-                              </div>
-                         </div>
-                         <!-- Testimonial Item 3 -->
-                         <div class="carousel-item">
-                              <div class="row justify-content-center">
-                                   <div class="col-md-6 text-center">
-                                        <img src="{{url_for('static' ,filename ='img/customer3.png')}}"
-                                             class="rounded-circle mb-3" alt="Customer 3" width="100" height="100">
-                                        <h5 class="fw-bold">Yasmin</h5>
-                                        <p class="text-warning">
-                                             <i class="fas fa-star"></i>
-                                             <i class="fas fa-star"></i>
-                                             <i class="fas fa-star"></i>
-                                             <i class="fas fa-star"></i>
-                                             <i class="fas fa-star-half-alt"></i>
-                                        </p>
-                                        <p>"Great customer service and the watches are worth every penny. Will buy
-                                             again!"</p>
-                                   </div>
-                              </div>
-                         </div>
-                    </div>
-                    <!-- Carousel Controls -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
-                         data-bs-slide="prev">
-                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                         <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel"
-                         data-bs-slide="next">
-                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                         <span class="visually-hidden">Next</span>
-                    </button>
-               </div>
-          </div>
-     </section>
-
-
-     <!-- banner -->
-     <h2 class="text-center mb-4 mt-4" style="color: #e2c044; font-weight:bold">Featured Products</h2>
-
-     <a href="/show_product/"><img 
-          src="{{ url_for('static', filename='img/indexBanner.png') }}" 
-          alt="About Us Banner" 
-          class="img-fluid rounded shadow" 
-          style="width: 100%; height: 100%; object-fit: cover;"></a>
      
-
-
-
-
-     <!-- footer -->
-     <footer class="bg-dark text-light pt-5 pb-3" style="background-color: #161212;">
+    <!-- footer -->
+    <footer class="bg-dark text-light pt-5 pb-3" style="background-color: #161212;">
           <div class="container">
                <div class="row">
                     <!-- About Section -->
@@ -447,14 +318,14 @@
                     <p class="mb-0">&copy; 2025 Watch Store. All Rights Reserved.</p>
                </div>
           </div>
-     </footer>
+    </footer>
 
 
-     <!-- Bootstrap JS -->
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 
-     </script>
+    </script>
 </body>
 
 </html>

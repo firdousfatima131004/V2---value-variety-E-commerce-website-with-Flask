@@ -141,7 +141,7 @@
                     </ul>
                </div>
                <div class="d-flex align-items-center">
-                    <i class="fa-solid fa-cart-shopping cart-icon"></i>
+                    <a href="/cart/"><i class="fa-solid fa-cart-shopping cart-icon"></i></a>
                     {% if username %}
                     <p class="user-greeting">Hi {{username}}!</p>
                     {% endif %}
@@ -153,7 +153,7 @@
      <div class="container main_div mt-5" >
           <div class="row">
               <!-- Image Section -->
-              <div class="col-md-6 d-none d-md-block">
+              <div class="col-md-6 mb-3">
                   <img src="{{url_for('static', filename='img/login_img.webp')}}" alt="Login Image" class="img-fluid rounded">
               </div>
               <!-- Login Form Section -->

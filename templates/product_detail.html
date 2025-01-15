@@ -19,91 +19,129 @@
      <link rel="stylesheet" href="{{url_for('static' ,filename ='css/style.css')}}">
 
      <style>
-          .why-card {
-               background-color: #222;
-               /* Match your website's dark background */
-               border: none;
+          /* single product detail */
+          .single-product {
+               margin-top: 60px;
+          }
+
+          .single-product .col-2 img {
+               padding: 0;
+          }
+
+          .single-product .col-2 {
                padding: 20px;
-               border-radius: 10px;
-               transition: transform 0.3s, box-shadow 0.3s;
           }
 
-          .why-card:hover {
-               transform: translateY(-10px);
-               box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
-          }
-
-          .why-card .icon {
-               font-size: 40px;
-               color: #e2c044;
-               /* Accent color for the icons */
-          }
-
-          .why-card .card-title {
-               font-family: 'Roboto', sans-serif;
-               font-weight: 700;
-          }
-
-          .why-card .card-text {
-               font-family: 'Roboto', sans-serif;
-               font-size: 14px;
-          }
-
-          .text-light {
-               color: #f9f9f9 !important;
-          }
-
-          .text-muted {
-               color: #aaa !important;
-          }
-
-
-          .about-us-section {
-               background-color: #222;
-               /* Matches the dark theme of your site */
-               padding: 40px 20px;
-               border-radius: 10px;
-               box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
-          }
-
-          .about-img {
-               border-radius: 10px;
-               box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
-          }
-
-          .about-us-section h2,
-          .about-us-section h3,
-          .about-us-section h4 {
-               font-family: 'Roboto', sans-serif;
+          .single-product h4 {
+               margin: 20px 0;
+               font-size: 22px;
                font-weight: bold;
-               color: #f9f9f9;
           }
 
-          .about-us-section p {
-               font-family: 'Roboto', sans-serif;
-               font-size: 16px;
-               color: #aaa;
-               /* Light gray text for better readability */
-               line-height: 1.6;
+          .single-product select {
+               display: block;
+               padding: 10px;
+               margin-top: 20px;
           }
 
-          .text-light {
-               color: #f9f9f9 !important;
+          .single-product input {
+               width: 50px;
+               height: 40px;
+               padding-left: 10px;
+               margin-right: 10px;
+               font-size: 20px;
+               border: 1px solid #ff523b;
           }
 
-          .text-muted {
-               color: #aaa !important;
+          input:focus {
+               outline: none;
           }
 
-          .about-us-section img:hover {
-               transform: scale(1.02);
-               transition: transform 0.3s ease;
+          .single-product .fa {
+               color: #ff523b;
+               margin-left: 10px;
+          }
+
+          .small-img-row {
+               display: flex;
+               justify-content: space-between;
+          }
+
+          .small-img-col {
+               flex-basis: 24%;
+               cursor: pointer;
+          }
+
+          .cart-page {
+               margin: 80px auto;
+          }
+
+          table {
+               width: 100%;
+               border-collapse: collapse;
+          }
+
+          .cart-info {
+               display: flex;
+               flex-wrap: wrap;
+          }
+
+          th {
+               text-align: left;
+               padding: 5px;
+               color: #fff;
+               background: #ff523b;
+               font-weight: normal;
+          }
+
+          td {
+               padding: 10px 5px;
+          }
+
+          td input {
+               width: 40px;
+               height: 30px;
+               padding: 5px;
+          }
+
+          td a {
+               color: #ff523b;
+               font-size: 12px;
+          }
+
+          td img {
+               width: 80px;
+               height: 80px;
+               margin-right: 10px;
+          }
+
+          .total-price {
+               display: flex;
+               justify-content: flex-end;
+          }
+
+          .total-price table {
+               border-top: 2px solid #ff523b;
+               width: 100%;
+               max-width: 400px;
+          }
+
+          td:last-child {
+               text-align: right;
+          }
+
+          th:last-child {
+               text-align: right;
+          }
+
+          .ii{
+               margin-left: 10px;
           }
      </style>
-
 </head>
 
 <body style="background-color: #1a1a1a;">
+
      <!-- navbar -->
      <nav class="navbar navbar-expand-lg navbar-dark">
           <div class="container-fluid">
@@ -145,94 +183,50 @@
           </div>
      </nav>
 
-
-
-     <!-- banner -->
-     <h2 class="mt-3 text-center" style="color: #e2c044;">About Us</h2>
-     <div class="container">
-          <div class="row mt-4">
-               <div class="col-md-6">
-                    <img src="{{url_for('static', filename='img/newww.png')}}" alt="portrait banner"
-                         style="width: 100%; height: 100%; object-fit: cover;">
+     <!-- single product detail -->
+     <h2 class="mt-5 mb-0 text-center" style="color: #e2c044;">Product Details</h2>
+     <div class="container-fluid">
+          <div class="small-container single-product">
+               <div class="row">
+                    <div class="col-md-6">
+                         <img src="{{mydata.img1}}" width="100%" id="product-img">
+     
+                         <div class="small-img-row mt-3">
+                              <div class="small-img-col">
+                                   <img src="{{mydata.img1}}" class="small-img" width="100%">
+                              </div>
+                              <div class="small-img-col ii">
+                                   <img src="{{mydata.img2}}" class="small-img" width="100%">
+                              </div>
+                              <div class="small-img-col ii">
+                                   <img src="{{mydata.img3}}" class="small-img" width="100%">
+                              </div>
+                              <div class="small-img-col ii">
+                                   <img src="{{mydata.img4}}" class="small-img" width="100%">
+                              </div>
+                              <div class="small-img-col ii">
+                                   <img src="{{mydata.img5}}" class="small-img" width="100%">
+                              </div>
+                         </div>
+                    </div>
+                    <div class="col-md-6 mt-5 mb-5 ">
+                         <h1  class="mt-3" style="color: #e2c044;">{{mydata.productname}}</h1>
+                         <p class="mt-3" style="color: #fff;">{{mydata.productPrice}}</p>
+                         <h3 class="mt-2" style="color: #e2c044;">Product Details <i class="fa fa-indent"></i></h3>
+                         <p class="mt-3" style="color: #fff;">{{mydata.productDesc}}</p>
+                         
+                         <input type="number" value="1">
+                         <a href="/cart/" class="btn" style="background-color: #e2c044;">Add To cart</a>
+                    </div>
                </div>
-               <div class="col-md-6 mt-5">
-                    <h3 class="mb-3" style="color: #e2c044;">Who We Are</h3>
-                    <p class="text-muted">
-                         At <strong>Timeless Watches</strong>, we are passionate about creating exquisite timepieces
-                         that reflect both luxury and precision.
-                         With a rich legacy of craftsmanship, our watches blend tradition with modernity to suit every
-                         style and occasion.
-                    </p>
-                    <h4 class="mt-4" style="color: #e2c044;">Our Mission</h4>
-                    <p class="text-muted">
-                         To redefine elegance through premium quality watches, providing timeless designs that transcend
-                         trends and stand as a symbol of sophistication.
-                    </p>
-                    <h4 class="mt-4" style="color: #e2c044;">Our Vision</h4>
-                    <p class="text-muted">
-                         To become the leading global brand in luxury watches by delivering exceptional quality and
-                         unparalleled customer satisfaction.
-                    </p>
-               </div>
-               
           </div>
      </div>
-
-
+     
      
 
 
-
-
-
-     <!-- main content -->
-     <div class="container mt-5">
-          <h2 class="text-center text-light mb-4">Why Choose Us?</h2>
-          <div class="row">
-               <div class="col-md-4 mb-3">
-                    <div class="card why-card text-center">
-                         <div class="card-body">
-                              <div class="icon mb-3">
-                                   <i class="fa-solid fa-clock"></i>
-                              </div>
-                              <h4 class="card-title text-light">Exquisite Craftsmanship</h4>
-                              <p class="card-text text-muted">Every watch is meticulously designed and crafted to ensure
-                                   unparalleled quality and elegance.</p>
-                         </div>
-                    </div>
-               </div>
-               <div class="col-md-4 mb-3">
-                    <div class="card why-card text-center">
-                         <div class="card-body">
-                              <div class="icon mb-3">
-                                   <i class="fas fa-leaf"></i>
-                              </div>
-                              <h4 class="card-title text-light">Ethically Sourced</h4>
-                              <p class="card-text text-muted">We prioritize sustainability by using responsibly sourced
-                                   materials, ensuring beauty with a conscience.</p>
-                         </div>
-                    </div>
-               </div>
-               <div class="col-md-4 mb-3">
-                    <div class="card why-card text-center">
-                         <div class="card-body">
-                              <div class="icon mb-3">
-                                   <i class="fas fa-heart"></i>
-                              </div>
-                              <h4 class="card-title text-light">Timeless Designs</h4>
-                              <p class="card-text text-muted">Our watches capture the essence of timeless beauty,
-                                   blending tradition and modernity for every occasion.</p>
-                         </div>
-                    </div>
-               </div>
-          </div>
-     </div>
-
-
-
-
-     <!-- footer -->
-     <footer class="bg-dark text-light pt-5 pb-3 mt-4" style="background-color: #161212;">
+      <!-- footer -->
+      <footer class="bg-dark text-light pt-5 pb-3" style="background-color: #161212;">
           <div class="container">
                <div class="row">
                     <!-- About Section -->
@@ -283,8 +277,44 @@
 
      <!-- Bootstrap JS -->
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-          crossorigin="anonymous"></script>
+          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+
+     </script>
+     
+     <script>
+          var menuitems = document.getElementById("menuitems");
+          menuitems.style.maxHeight = "0px";
+          function menutoggle() {
+               if (menuitems.style.maxHeight == "0px") {
+                    menuitems.style.maxHeight = "200px";
+               }
+               else {
+                    menuitems.style.maxHeight = "0px";
+               }
+          }
+     </script>
+
+     <!-- js for product gallery -->
+     <script>
+          var productImg = document.getElementById("product-img")
+          var smallImg = document.getElementsByClassName("small-img")
+
+          smallImg[0].onclick = function () {
+               productImg.src = smallImg[0].src;
+          }
+
+          smallImg[1].onclick = function () {
+               productImg.src = smallImg[1].src;
+          }
+
+          smallImg[2].onclick = function () {
+               productImg.src = smallImg[2].src;
+          }
+
+          smallImg[3].onclick = function () {
+               productImg.src = smallImg[3].src;
+          }
+     </script>
 </body>
 
 </html>
