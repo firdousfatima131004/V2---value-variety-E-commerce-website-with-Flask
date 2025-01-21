@@ -1,0 +1,61 @@
+
+
+.product-image {
+     max-height: 400px;
+     object-fit: cover;
+     border-radius: 8px;
+     margin-bottom: 20px;
+}
+
+.card {
+     border-radius: 8px;
+     overflow: hidden;
+     transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+     box-shadow: 0px 8px 20px #000000;
+}
+
+.card-header {
+     font-size: 1.5rem;
+     font-weight: bold;
+     text-transform: uppercase;
+     border-bottom: none;
+}
+
+.form-label {
+     font-weight: bold;
+     color: #000000;
+}
+
+.form-control {
+     border-radius: 5px;
+     border: 1px solid #ddd;
+     background-color: #000000;
+     color: #E6C399;
+     transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+     border-color: #E6C399;
+     box-shadow: 0px 0px 5px #E6C399;
+}
+
+.btn-warning {
+     background-color: #4B3F2F;
+     font-size: 1rem;
+     font-weight: bold;
+     transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-warning:hover {
+     background-color:#E6C399;
+     color: #000000;
+}
+
+img {
+     width: auto;
+     border-radius: 15px;
+     height: 100%;
+}

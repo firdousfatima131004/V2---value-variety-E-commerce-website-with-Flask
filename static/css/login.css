@@ -1,0 +1,80 @@
+/* General Styling */
+body {
+    font-family: 'Merriweather Sans', sans-serif;
+    
+    color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/* Card Design */
+.cardd {
+    /* background: linear-gradient(to bottom, #367588 , #24445C); */
+    margin-top: 0px;
+    border-radius: 15px;
+    color: #f8f9fa;
+    box-shadow: 0 8px 25px #000000;
+}
+
+.cardd h2 {
+    color: #4B3F2F;
+    font-weight: 700;
+}
+
+/* Form Labels */
+.form-label {
+    color: #000000;
+    font-size: 0.9rem;
+}
+
+input {
+     width: 100%;
+     padding: 10px;
+     margin: 10px 0 20px;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+     background-color: #E0DDD2;
+     color: #000000;
+}
+
+input:focus {
+     border-color: #013220;
+     outline: none;
+     box-shadow: 0 0 5px #013220;
+}
+
+/* Buttons */
+.btnnn {
+    background-color: #013220;
+    border: none;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #000000;
+    transition: background-color 0.3s ease;
+}
+
+.btnnn {
+    background-color: #E6C399;
+    color: #fff;
+}
+
+/* Links */
+.text-center a {
+    color: #013220;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.text-center a:hover {
+    text-decoration: underline;
+}
+
+/* Alerts */
+.alert {
+    font-size: 0.9rem;
+}
+

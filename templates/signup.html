@@ -1,250 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Watche Store</title>
-     <!-- bootstrap link -->
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+{% block abc %}
 
-     <!-- font awesome link -->
-     <script src="https://kit.fontawesome.com/b755c6ef44.js" crossorigin="anonymous"></script>
-
-     <!-- css link-->
-     <link rel="stylesheet" href="{{url_for('static' ,filename ='css/style.css')}}">
-
-     <!-- google font link -->
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-          rel="stylesheet">
-
-     <style>
-          body {
-               font-family: 'Merriweather Sans', sans-serif;
-               background-color: #f8f9fa;
-          }
-
-          .main_div {
-               margin-top: 50px;
-               background-color: #1a1a1a;
-               border-radius: 15px;
-               box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-               padding: 30px;
-               color: #f8f9fa;
-          }
-
-          h2 {
-               color: #ffc107;
-               font-weight: 700;
-          }
-
-          label {
-               color: #f8f9fa;
-               font-size: 1rem;
-          }
-
-          input {
-               width: 100%;
-               padding: 10px;
-               margin: 10px 0 20px;
-               border: 1px solid #ccc;
-               border-radius: 5px;
-               background-color: #2c2c2c;
-               color: #f8f9fa;
-          }
-
-          input:focus {
-               border-color: #ffc107;
-               outline: none;
-               box-shadow: 0 0 5px rgba(255, 193, 7, 0.8);
-          }
-
-          .btn-primary {
-               background-color: #ffc107;
-               border: none;
-               font-size: 1rem;
-               font-weight: 700;
-               padding: 10px 20px;
-               border-radius: 5px;
-               color: #1a1a1a;
-               transition: background-color 0.3s ease;
-          }
-
-          .btn-primary:hover {
-               background-color: #e0a800;
-               color: #fff;
-          }
-
-          .text-center a {
-               color: #ffc107;
-               text-decoration: none;
-          }
-
-          .text-center a:hover {
-               text-decoration: underline;
-          }
-
-          .text {
-               padding: 10px;
-               border-radius: 5px;
-               margin-bottom: 20px;
-          }
-
-          .text strong {
-               font-size: 0.9rem;
-          }
-
-          .row {
-               align-items: center;
-          }
-
-          img {
-               width: 100%;
-               border-radius: 15px;
-          }
-     </style>
-
-
-</head>
-
-<body style="background-color: #1a1a1a;">
-     <!-- nav bar -->
-     <nav class="navbar navbar-expand-lg navbar-dark">
-          <div class="container-fluid">
-               <a class="navbar-brand" href="#">WatchStore</a>
-               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-               </button>
-               <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav mx-auto">
-                         <li class="nav-item">
-                              <a class="nav-link" href="/">Home</a>
-                         </li>
-                         <li class="nav-item">
-                              <a class="nav-link" href="/about_us/">About Us</a>
-                         </li>
-                         <li class="nav-item">
-                              <a class="nav-link" href="/show_product/">Products</a>
-                         </li>
-                         <li class="nav-item">
-                              <a class="nav-link" href="/blogs/">Blog</a>
-                         </li>
-                         <li class="nav-item">
-                              <a class="nav-link" href="/login/">Account</a>
-                         </li>
-                         {% if username %}
-                         <li class="nav-item">
-                              <a class="nav-link" href="/logout/">Logout</a>
-                         </li>
+<!-- main container -->
+<div class="container ">
+     <div class="row">
+          <div class="col-md-6 mt-3">
+               <img src="{{url_for('static' ,filename ='img/signup.png')}}" alt="Signup Image" class="imgg">
+          </div>
+          
+          <div class="col-md-6 mb-4">
+               <!-- Signup Form -->
+               <div class="container-fluid main_div">
+                    <form action="{{ url_for('signup') }}" method="POST">
+                         <h2 class="text-center mb-4">Create New Account</h2>
+                         {% if success %}
+                         <div  style="color:#013220;">
+                              <strong>{{ success }}</strong>
+                         </div>
+                         {% else %}
+                         <div  style="background-color: #f8d7da; color: #721c24;">
+                              <strong>{{ error }}</strong>
+                         </div>
                          {% endif %}
-                    </ul>
-               </div>
-               <div class="d-flex align-items-center">
-                    <a href="/cart/"><i class="fa-solid fa-cart-shopping cart-icon"></i></a>
-                    {% if username %}
-                    <p class="user-greeting">Hi {{username}}!</p>
-                    {% endif %}
-               </div>
-          </div>
-     </nav>
+                         <label for="user_name">User Name</label>
+                         <input type="text" id="user_name" name="username" placeholder="Enter your username">
 
+                         <label for="email">Email</label>
+                         <input type="email" id="email" name="email" placeholder="Enter your email">
 
-     <!-- main container -->
-     <div class="container main_div">
-          <div class="row">
-               <div class="col-md-6">
-                    <img src="{{url_for('static' ,filename ='img/signup_img.webp')}}" alt="Signup Image">
-               </div>
-               <div class="col-md-6">
-                    <!-- Signup Form -->
-                    <div class="container-fluid">
-                         <form action="{{ url_for('signup') }}" method="POST">
-                              <h2 class="text-center mb-4">Create New Account</h2>
-                              {% if success %}
-                              <div class="text" style="background-color: #d4edda; color: #155724;">
-                                   <strong>{{ success }}</strong>
-                              </div>
-                              {% else %}
-                              <div class="text" style="background-color: #f8d7da; color: #721c24;">
-                                   <strong>{{ error }}</strong>
-                              </div>
-                              {% endif %}
-                              <label for="user_name">User Name</label>
-                              <input type="text" id="user_name" name="username" placeholder="Enter your username">
+                         <label for="phone">Phone no.</label>
+                         <input type="number" id="phone" name="phone" placeholder="Enter your Phone no.">
 
-                              <label for="email">Email</label>
-                              <input type="email" id="email" name="email" placeholder="Enter your email">
+                         <label for="password">Password</label>
+                         <input type="password" id="password" name="password" placeholder="Enter your password">
 
-                              <label for="phone">Phone no.</label>
-                              <input type="number" id="phone" name="phone" placeholder="Enter your Phone no.">
+                         <button type="submit" class="btn btn-primary w-100">Sign Up</button>
 
-                              <label for="password">Password</label>
-                              <input type="password" id="password" name="password" placeholder="Enter your password">
-
-                              <button type="submit" class="btn btn-primary w-100">Sign Up</button>
-
-                              <div class="text-center mt-3">
-                                   <p>Login To Your Account. <a href="/login/">Login</a></p>
-                              </div>
-                         </form>
-                    </div>
+                         <div class="text-center mt-3">
+                              <p style="color: #000000;">Login To Your Account. <a style="color: #013220;" href="/login/">Login</a></p>
+                         </div>
+                    </form>
                </div>
           </div>
+         
+
+          
      </div>
-
-
-     <!-- footer -->
-     <footer class="bg-dark text-light pt-5 pb-3" style="background-color: #161212;">
-          <div class="container">
-              <div class="row">
-                  <!-- About Section -->
-                  <div class="col-md-4">
-                      <h5 class="text-uppercase mb-4" style="color: #e2c044;">About Us</h5>
-                      <p>
-                          Welcome to Watch Store, your ultimate destination for luxury and stylish timepieces. Explore our exclusive collection and find the perfect watch to complement your style.
-                      </p>
-                  </div>
-                  <!-- Quick Links Section -->
-                  <div class="col-md-4">
-                      <h5 class="text-uppercase mb-4" style="color: #e2c044;">Quick Links</h5>
-                      <ul class="list-unstyled">
-                          <li><a href="/" class="text-light text-decoration-none"><i class="fas fa-angle-right me-2"></i>Home</a></li>
-                          <li><a href="/about" class="text-light text-decoration-none"><i class="fas fa-angle-right me-2"></i>About Us</a></li>
-                          <li><a href="/show_product/" class="text-light text-decoration-none"><i class="fas fa-angle-right me-2"></i>Products</a></li>
-                          <li><a href="/blog" class="text-light text-decoration-none"><i class="fas fa-angle-right me-2"></i>Blog</a></li>
-                          <li><a href="/contact" class="text-light text-decoration-none"><i class="fas fa-angle-right me-2"></i>Contact Us</a></li>
-                      </ul>
-                  </div>
-                  <!-- Contact Section -->
-                  <div class="col-md-4">
-                      <h5 class="text-uppercase mb-4" style="color: #e2c044;">Contact Us</h5>
-                      <p><i class="fas fa-map-marker-alt me-2"></i>123 Watch Avenue, New York, NY</p>
-                      <p><i class="fas fa-phone me-2"></i>+1 234 567 890</p>
-                      <p><i class="fas fa-envelope me-2"></i>info@watchstore.com</p>
-                      <div class="social-icons mt-3">
-                          <a href="#" class="text-light me-3"><i class="fab fa-facebook-f"></i></a>
-                          <a href="#" class="text-light me-3"><i class="fab fa-twitter"></i></a>
-                          <a href="#" class="text-light me-3"><i class="fab fa-instagram"></i></a>
-                          <a href="#" class="text-light"><i class="fab fa-linkedin-in"></i></a>
-                      </div>
-                  </div>
-              </div>
-              <hr class="text-light">
-              <div class="text-center">
-                  <p class="mb-0">&copy; 2025 Watch Store. All Rights Reserved.</p>
-              </div>
-          </div>
-     </footer>
-
-
-     <!-- bootstrap link js  -->
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-          crossorigin="anonymous"></script>
-</body>
-
-</html>
+     
+</div>
+{% endblock abc%}

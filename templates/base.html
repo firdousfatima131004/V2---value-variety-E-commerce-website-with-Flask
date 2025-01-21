@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Watch Store</title>
+     <!-- Bootstrap CSS -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+     <!-- Font Awesome -->
+     <script src="https://kit.fontawesome.com/b755c6ef44.js" crossorigin="anonymous"></script>
+
+     <!-- Google Fonts -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+     <!-- css link-->
+     <link rel="stylesheet" href="{{url_for('static' ,filename ='css/style.css')}}">
+     <link rel="stylesheet" href="{{url_for('static' ,filename ='css/cart.css')}}">
+     <link rel="stylesheet" href="{{url_for('static' ,filename ='css/login.css')}}">
+     <link rel="stylesheet" href="{{url_for('static' ,filename ='css/signup.css')}}">
+     <link rel="stylesheet" href="{{url_for('static' ,filename ='css/view_product.css')}}">
+     <link rel="stylesheet" href="{{url_for('static' ,filename ='css/productdetail.css')}}">
+     
+     
+
+</head>
+
+<body>
+     <!-- navbar -->
+     <nav class="navbar navbar-expand-lg navbar-dark">
+          <div class="container-fluid">
+               <!-- Left Side: V2 -->
+               <img src="{{url_for('static' ,filename ='img/logoFinal.png')}}" alt="logo" style="height: 50px;">
+               <!-- Toggler for Small Screens -->
+               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon" style="border: none;"></span>
+               </button>
+
+               <!-- Right Side: Links and User Info -->
+               <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
+                    <ul class="navbar-nav">
+                         <li class="nav-item">
+                              <a class="nav-link" style="color: #ffffff;" href="/">Home</a>
+                         </li>
+                         <li class="nav-item">
+                              <a class="nav-link" style="color: #ffffff;" href="/about_us/">About Us</a>
+                         </li>
+                         <li class="nav-item">
+                              <a class="nav-link" style="color: #ffffff;" href="/product/">Products</a>
+                         </li>
+                         <li class="nav-item">
+                              <a class="nav-link" style="color: #ffffff;" href="/blogs/">Blog</a>
+                         </li>
+                         <li class="nav-item">
+                              <a class="nav-link" style="color: #ffffff;" href="/login/">Account</a>
+                         </li>
+                         <li class="nav-item">
+                              <a href="/cart/" class="nav-link">
+                                   <!-- /* From Uiverse.io by Julian956 */ -->
+                                   <button data-quantity=" " class="btn-cart">
+                                        <svg class="icon-cart" viewBox="0 0 24.38 30.52" height="30.52" width="24.38"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                             <title>icon-cart</title>
+                                             <path transform="translate(-3.62 -0.85)"
+                                                  d="M28,27.3,26.24,7.51a.75.75,0,0,0-.76-.69h-3.7a6,6,0,0,0-12,0H6.13a.76.76,0,0,0-.76.69L3.62,27.3v.07a4.29,4.29,0,0,0,4.52,4H23.48a4.29,4.29,0,0,0,4.52-4ZM15.81,2.37a4.47,4.47,0,0,1,4.46,4.45H11.35a4.47,4.47,0,0,1,4.46-4.45Zm7.67,27.48H8.13a2.79,2.79,0,0,1-3-2.45L6.83,8.34h3V11a.76.76,0,0,0,1.52,0V8.34h8.92V11a.76.76,0,0,0,1.52,0V8.34h3L26.48,27.4a2.79,2.79,0,0,1-3,2.44Zm0,0">
+                                             </path>
+                                        </svg>
+                                        <span class="quantity"></span>
+                                   </button>
+
+                              </a>
+                         </li>
+                         {% if username %}
+                         <li class="nav-item">
+                              <a href="#" class="nav-link" style="color: #ffffff;"> Hi {{ username}}!</a>
+
+
+                         </li>
+                         {% endif %}
+                    </ul>
+               </div>
+          </div>
+     </nav>
+      
+
+
+     {% block abc %}{% endblock abc%}
+
+     <!-- footer -->
+     <footer class=" text-light pt-5 pb-3 ">
+          <div class="container">
+               <div class="row">
+                    <!-- About Section -->
+                    <div class="col-md-4">
+                         <h5 class="text-uppercase mb-4" style="color: #FFFFFF;">About Us</h5>
+                         <p>
+                              Welcome to V2 Mall, your ultimate destination for a premium shopping experience. We bring
+                              you a diverse range of quality products from trusted brands, ensuring satisfaction with
+                              every purchase. we aim to make your experience effortless and enjoyable. Discover the joy
+                              of shopping with us today!
+                         </p>
+                    </div>
+                    <!-- Quick Links Section -->
+                    <div class="col-md-4">
+                         <h5 class="text-uppercase mb-4" style="color: #ffffff;">Quick Links</h5>
+                         <ul class="list-unstyled">
+                              <li><a href="/" class="text-decoration-none"><i
+                                             class="fas fa-angle-right me-2"></i>Home</a></li>
+                              <li><a href="/about" class="text-decoration-none"><i
+                                             class="fas fa-angle-right me-2"></i>About Us</a></li>
+                              <li><a href="/show_product/" class="text-decoration-none"><i
+                                             class="fas fa-angle-right me-2"></i>Products</a></li>
+                              <li><a href="/blog" class="text-decoration-none"><i
+                                             class="fas fa-angle-right me-2"></i>Blog</a></li>
+                              <li><a href="/contact" class="text-decoration-none"><i
+                                             class="fas fa-angle-right me-2"></i>Contact Us</a></li>
+                         </ul>
+                    </div>
+                    <!-- Contact Section -->
+                    <div class="col-md-4">
+                         <h5 class="text-uppercase mb-4" style="color: #ffffff;">Contact Us</h5>
+                         <p><i class="fas fa-map-marker-alt me-2 aa"></i>123 Mall Avenue, New York, NY</p>
+                         <p><i class="fas fa-phone me-2 aa"></i>+1 234 567 890</p>
+                         <p><i class="fas fa-envelope me-2 aa"></i>info@v2mall.com</p>
+                         <div class="social-icons mt-3">
+                              <a href="#" class="text-light me-3"><i class="fab fa-facebook-f aa"></i></a>
+                              <a href="#" class="text-light me-3"><i class="fab fa-twitter aa"></i></a>
+                              <a href="#" class="text-light me-3"><i class="fab fa-instagram aa"></i></a>
+                              <a href="#" class="text-light"><i class="fab fa-linkedin-in aa"></i></a>
+                         </div>
+                    </div>
+               </div>
+               <hr class="text-light">
+               <div class="text-center">
+                    <p class="mb-0">&copy; 2025 Value and variety Mall. Crafted with ❤️ by Firdous Fatima.</p>
+               </div>
+          </div>
+     </footer>
+
+
+     <!-- Bootstrap JS -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+
+          </script>
+
+</body>
+
+</html>

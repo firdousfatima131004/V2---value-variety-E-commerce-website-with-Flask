@@ -1,174 +1,114 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% block abc %}
 
-<head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Watch Store</title>
-     <!-- Bootstrap CSS -->
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<!-- view product -->
+<div class="container py-5">
+    <h1 class="text-center mb-4 fw-bold" style="color: #013220;">Explore Our Offered Products</h1>
+    <div class="row">
+        <!-- Tops -->
+        <div class="col-md-4 mb-4">
+            <div class="card  shadow-sm">
+                <img src="{{ url_for('static', filename='img/top1.png') }}" class="card-img-top" alt="Tops"
+                    style="height: 250px; object-fit: cover;">
+                <div class="card-body cc" style="background-color: #fef9f6;">
+                    <h5 class="card-title" style="color: #000000;"><strong>Tops</strong></h5>
+                    <p class="card-text" style="color: #000000;">Discover our exclusive collection of Tops.</p>
+                    <div class="text-center">
+                        <a href="/show_product/Tops"><button class="btn pbtn">Explore</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-     <!-- Font Awesome -->
-     <script src="https://kit.fontawesome.com/b755c6ef44.js" crossorigin="anonymous"></script>
+        <!-- Bottoms -->
+        <div class="col-md-4 mb-4">
+            <div class="card  shadow-sm">
+                <img src="{{ url_for('static', filename='img/bottom.webp') }}" class="card-img-top"
+                    alt="Bottoms" style="height: 250px; object-fit: cover;">
+                <div class="card-body cc" style="background-color: #fef9f6;">
+                    <h5 class="card-title" style="color: #000000;"><strong>Bottoms</strong></h5>
+                    <p class="card-text" style="color: #000000;">Find stylish and comfortable Bottoms.</p>
+                    <div class="text-center">
+                        <a href="/show_product/Bottoms"><button class="btn pbtn">Explore</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-     <!-- Google Fonts -->
-     <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;700&display=swap" rel="stylesheet">
+        <!-- Jackets -->
+        <div class="col-md-4 mb-4">
+            <div class="card  shadow-sm">
+                <img src="{{ url_for('static', filename='img/jacket.png') }}" class="card-img-top"
+                    alt="Jackets" style="height: 250px; object-fit: cover;">
+                <div class="card-body cc" style="background-color: #fef9f6;">
+                    <h5 class="card-title" style="color: #000000;"><strong>Jackets</strong></h5>
+                    <p class="card-text" style="color: #000000;">Shop our trendy and warm Jackets.</p>
+                    <div class="text-center">
+                        <a href="/show_product/Jackets"><button class="btn pbtn">Explore</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-     <!-- css link-->
-     <link rel="stylesheet" href="{{url_for('static' ,filename ='css/style.css')}}">
+        <!-- Accessories -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <img src="{{ url_for('static', filename='img/pend.png') }}" class="card-img-top"
+                    alt="Accessories" style="height: 250px; object-fit: cover;">
+                <div class="card-body cc" style="background-color: #fef9f6;">
+                    <h5 class="card-title" style="color: #000000;"><strong>Accessories</strong> </h5>
+                    <p class="card-text" style="color: #000000;">Find the perfect accessories to complement your style.</p>
+                    <div class="text-center">
+                        <a href="/show_product/Accessories"><button class="btn pbtn">Explore</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-     <style>
-        .card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 8px 16px #e2c044;
-            transition: all 0.3s ease-in-out;
-        }
-     </style>
-     
-</head>
+        <!-- Makeup -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <img src="{{ url_for('static', filename='img/customer4.png') }}" class="card-img-top" alt="Makeup"
+                    style="height: 250px; object-fit: cover;">
+                <div class="card-body cc" style="background-color: #fef9f6;">
+                    <h5 class="card-title" style="color: #000000;"><strong> Makeup</strong></h5>
+                    <p class="card-text" style="color: #000000;">Explore our range of quality makeup products.</p>
+                    <div class="text-center">
+                        <a href="/show_product/Makeup"><button class="btn pbtn">Explore</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<body style="background-color: #1a1a1a;">
-     <!-- navbar -->
-     <nav class="navbar navbar-expand-lg navbar-dark">
-          <div class="container-fluid">
-               <a class="navbar-brand" href="#">WatchStore</a>
-               <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-               </button>
-               <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav mx-auto">
-                         <li class="nav-item">
-                              <a class="nav-link" href="/">Home</a>
-                         </li>
-                         <li class="nav-item">
-                              <a class="nav-link" href="/about_us/">About Us</a>
-                         </li>
-                         <li class="nav-item">
-                              <a class="nav-link" href="/show_product/">Products</a>
-                         </li>
-                         <li class="nav-item">
-                              <a class="nav-link" href="/blogs/">Blog</a>
-                         </li>
-                         <li class="nav-item">
-                              <a class="nav-link" href="/login/">Account</a>
-                         </li>
-                         {% if username %}
-                         <li class="nav-item">
-                              <a class="nav-link" href="/logout/">Logout</a>
-                         </li>
-                         {% endif %}
-                    </ul>
-               </div>
-               <div class="d-flex align-items-center">
-                    <a href="/cart/"><i class="fa-solid fa-cart-shopping cart-icon"></i></a>
-                    {% if username %}
-                    <p class="user-greeting">Hi {{username}}!</p>
-                    {% endif %}
-               </div>
-          </div>
-     </nav>
+        <!-- Watchess -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <img src="{{ url_for('static', filename='img/add_product_img.jpg') }}" class="card-img-top"
+                    alt="Electronics" style="height: 250px; object-fit: cover; ">
+                <div class="card-body cc" style="background-color: #fef9f6;">
+                    <h5 class="card-title" style="color: #000000;"><strong>Watches</strong> </h5>
+                    <p class="card-text" style="color: #000000;">Browse our timeless collection of elegant and stylish watches.</p>
+                    <div class="text-center">
+                        <a href="/show_product/Watches"><button class="btn pbtn">Explore</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-
-
-     <!-- show_product -->
-     <div class="container py-5">
-          <h2 class="text-center mb-4" style="color: #e2c044;">Explore Products</h2>
-          <div class="row">
-              {% if products %}
-                  {% for product in products %}
-                      <div class="col-md-4 mb-4">
-                          <div class="card shadow-sm product-card" >
-                              <a href="/product_detail/{{ product.id }}">
-                                <img src="{{ product.img1 }}" class="card-img-top" alt="{{ product.productname }}" style="height: 250px; object-fit: cover;">
-                              </a>
-                              
-      
-                              <div class="card-body" style="background-color: #5c5858; color:#fff;">
-                                  <h5 class="card-title">{{ product.productname }}</h5>
-                                  <p class="card-text">{{ product.productDesc }}</p>
-                                  <p class="card-text"><strong>Price:</strong> ₹{{ product.productPrice }}</p>
-                                  
-                                  {% if role != 'admin' %}
-                                  <div>
-                                    <form action="{{ url_for('add_to_cart', product_id=product.id) }}" method="POST" class="mb-3">
-                                        <input type="number " name="quantity" value="1" min="1">
-                                        <button type="submit" style="background-color: #e2c044;">Add to Cart</button>
-                                    </form>
-                                      <a href="#" class="btn" style="background-color: #e2c044;">Buy Now</a>
-                                  </div>
-                                  {% endif %}
-                                  {% if role == 'admin' %}
-                                  <!-- <p class="card-title">Product ID = {{ product.id }}</p> -->
-                                  <div>
-                                     <a href="/update/{{ product.id }}" class="btn" style="background-color: #e2c044;">Update</a>
-                                     <a href="/delete/{{ product.id }}" class="btn btn-danger">Delete</a>
-                                  </div>
-                                  {% endif %}
-                              </div>
-                          </div>
-                      </div>
-                  {% endfor %}
-              {% else %}
-                  <div class="col-12 text-center">
-                      <p class="text-muted">No products available.</p>
-                  </div>
-              {% endif %}
-          </div>
-     </div>
-      
-      
-
-     <!-- footer -->
-     <footer class="bg-dark text-light pt-5 pb-3" style="background-color: #161212;">
-          <div class="container">
-              <div class="row">
-                  <!-- About Section -->
-                  <div class="col-md-4">
-                      <h5 class="text-uppercase mb-4" style="color: #e2c044;">About Us</h5>
-                      <p>
-                          Welcome to Watch Store, your ultimate destination for luxury and stylish timepieces. Explore our exclusive collection and find the perfect watch to complement your style.
-                      </p>
-                  </div>
-                  <!-- Quick Links Section -->
-                  <div class="col-md-4">
-                      <h5 class="text-uppercase mb-4" style="color: #e2c044;">Quick Links</h5>
-                      <ul class="list-unstyled">
-                          <li><a href="/" class="text-light text-decoration-none"><i class="fas fa-angle-right me-2"></i>Home</a></li>
-                          <li><a href="/about" class="text-light text-decoration-none"><i class="fas fa-angle-right me-2"></i>About Us</a></li>
-                          <li><a href="/show_product/" class="text-light text-decoration-none"><i class="fas fa-angle-right me-2"></i>Products</a></li>
-                          <li><a href="/blog" class="text-light text-decoration-none"><i class="fas fa-angle-right me-2"></i>Blog</a></li>
-                          <li><a href="/contact" class="text-light text-decoration-none"><i class="fas fa-angle-right me-2"></i>Contact Us</a></li>
-                      </ul>
-                  </div>
-                  <!-- Contact Section -->
-                  <div class="col-md-4">
-                      <h5 class="text-uppercase mb-4" style="color: #e2c044;">Contact Us</h5>
-                      <p><i class="fas fa-map-marker-alt me-2"></i>123 Watch Avenue, New York, NY</p>
-                      <p><i class="fas fa-phone me-2"></i>+1 234 567 890</p>
-                      <p><i class="fas fa-envelope me-2"></i>info@watchstore.com</p>
-                      <div class="social-icons mt-3">
-                          <a href="#" class="text-light me-3"><i class="fab fa-facebook-f"></i></a>
-                          <a href="#" class="text-light me-3"><i class="fab fa-twitter"></i></a>
-                          <a href="#" class="text-light me-3"><i class="fab fa-instagram"></i></a>
-                          <a href="#" class="text-light"><i class="fab fa-linkedin-in"></i></a>
-                      </div>
-                  </div>
-              </div>
-              <hr class="text-light">
-              <div class="text-center">
-                  <p class="mb-0">&copy; 2025 Watch Store. All Rights Reserved.</p>
-              </div>
-          </div>
-     </footer>
-      
-
-     <!-- Bootstrap JS -->
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-          crossorigin="anonymous"></script>
-</body>
-
-</html>
+        <!-- Electronics -->
+        <div class="col-md-4 mb-4">
+            <div class="card  shadow-sm">
+                <img src="{{ url_for('static', filename='img/electronics.jpeg') }}" class="card-img-top"
+                    alt="Electronics" style="height: 250px; object-fit: cover;">
+                <div class="card-body cc" style="background-color: #fef9f6;">
+                    <h5 class="card-title" style="color: #000000;"><strong>Electronics</strong> </h5>
+                    <p class="card-text" style="color: #000000;">Shop for the latest electronic gadgets and devices.</p>
+                    <div class="text-center">
+                        <a href="/show_product/Electronics"><button class="btn pbtn">Explore</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock abc%}

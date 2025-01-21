@@ -13,268 +13,508 @@
      <script src="https://kit.fontawesome.com/b755c6ef44.js" crossorigin="anonymous"></script>
 
      <!-- Google Fonts -->
-     <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;700&display=swap" rel="stylesheet">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet">
 
      <!-- css link-->
      <link rel="stylesheet" href="{{url_for('static' ,filename ='css/style.css')}}">
      <style>
-          body {
-               background-color: #1a1a1a;
+          body{
+               font-family: 'poppins';
+          }
+          .main_div {
+               margin-top: 10px;
+               /* background: linear-gradient(to bottom, #3e788a , #72adda); */
+               background-color: #FFFFFF;
+               border-radius: 15px;
+               box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+               padding: 30px 30px 30px 0px;
+               padding-bottom: 0%;
+               padding-top: 5px;
+               color: #f8f9fa;
           }
 
-          .Btn {
-               width: 140px;
-               height: 40px;
+          /* From Uiverse.io by FlexionJenish */
+          .button {
+               margin-top: 20px;
+               margin-left: 35px;
+               line-height: 1;
+               text-decoration: none;
+               display: inline-flex;
                border: none;
-               border-radius: 10px;
-               background: linear-gradient(to right, #77530a, #ffd277, #77530a, #77530a, #ffd277, #77530a);
-               background-size: 250%;
-               background-position: left;
-               color: #ffd277;
-               position: relative;
-               display: flex;
-               align-items: center;
-               justify-content: center;
                cursor: pointer;
-               transition-duration: 1s;
+               align-items: center;
+               gap: 0.75rem;
+               background-color: #4B3F2F;
+               color: #fff;
+               border-radius: 10rem;
+               font-weight: 600;
+               padding: 0.75rem 1.5rem;
+               padding-left: 20px;
+               white-space: nowrap;
+               overflow: hidden;
+               text-overflow: ellipsis;
+               transition: background-color 0.3s;
+          }
+
+          .button__icon-wrapper {
+               flex-shrink: 0;
+               width: 25px;
+               height: 25px;
+               position: relative;
+               color: var(--clr);
+               background-color: #fff;
+               border-radius: 50%;
+               display: grid;
+               place-items: center;
                overflow: hidden;
           }
 
-          .Btn::before {
+          .button:hover {
+               background-color: #000;
+          }
+
+          .button:hover .button__icon-wrapper {
+               color: #000;
+          }
+
+          .button__icon-svg--copy {
                position: absolute;
-               content: "EXPLORE";
-               color: #ffd277;
-               display: flex;
-               align-items: center;
-               justify-content: center;
-               width: 97%;
-               height: 90%;
-               border-radius: 8px;
-               transition-duration: 1s;
-               background-color: rgba(0, 0, 0, 0.842);
-               background-size: 200%;
+               transform: translate(-150%, -100%);
+               /* Initial position at top-left */
           }
 
-          .Btn:hover {
-               background-position: right;
-               transition-duration: 1s;
+          .button:hover .button__icon-svg:first-child {
+               transition: transform 0.3s ease-in-out;
+               transform: translate(150%, 100%);
+               /* Move to bottom-right on hover */
           }
 
-          .Btn:hover::before {
-               background-position: right;
-               transition-duration: 1s;
-          }
-
-          .Btn:active {
-               transform: scale(0.95);
+          .button:hover .button__icon-svg--copy {
+               transition: transform 0.3s ease-in-out 0.1s;
+               transform: translate(0);
+               /* Move to center */
           }
 
 
-          .testimonial-section {
-               background: #1a1a1a;
+
+
+
+          /* Mobile Responsiveness */
+          @media (max-width: 768px) {
+               .testimonial-section h2 {
+                    font-size: 2rem;
+               }
+
+               .testimonial-text {
+                    font-size: 1rem;
+               }
+
+               .rounded-circle {
+                    width: 120px;
+                    height: 120px;
+               }
           }
 
-          .testimonial-section h2 {
-               color: #ffd700;
+          .card-body {
+               background: linear-gradient(to bottom, #ffffff, #556B2F);
           }
 
-          .testimonial-section .carousel-control-prev-icon,
-          .testimonial-section .carousel-control-next-icon {
-               background-color: rgba(255, 255, 255, 0.8);
-               border-radius: 50%;
-          }
-
-          .testimonial-section .rounded-circle {
-               border: 3px solid #ffd700;
-          }
-
-          .testimonial-section p {
-               font-size: 1rem;
-               line-height: 1.5;
-          }
-
-          .trust-delivery-section {
-               background: #1a1a1a;
+          .featured-products h2 {
+               font-size: 2.5rem;
+               font-weight: bold;
           }
 
           .card {
-               border: none;
                border-radius: 10px;
-               transition: transform 0.3s ease, box-shadow 0.3s ease;
+               overflow: hidden;
+               transition: transform 0.3s, box-shadow 0.3s;
           }
 
           .card:hover {
-               transform: translateY(-10px);
-               box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+               transform: translateY(-5px);
+               box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
           }
 
-          .card .card-title {
-               font-family: 'Merriweather Sans', sans-serif;
-               font-weight: 700;
+          .card-img-top {
+               height: 250px;
+               object-fit: cover;
+               border-bottom: 2px solid #dee2e6;
           }
 
-          .card .card-text {
-               font-size: 0.95rem;
-               line-height: 1.5;
+          .card-text {
+               font-size: 1rem;
+               font-weight: 500;
+               margin-top: 10px;
           }
 
-          .card i {
-               display: inline-block;
+          @media (max-width: 768px) {
+               .featured-products h2 {
+                    font-size: 2rem;
+               }
+
+               .card-img-top {
+                    height: 200px;
+               }
+          }
+
+          .policies-section {
+
+               padding: 5rem 0;
+          }
+
+          .policies-section h2 {
+               font-size: 2.5rem;
+               font-weight: bold;
+               margin-bottom: 2rem;
+          }
+
+          .policy-box {
+               border-radius: 10px;
+               background-color: #ffffff;
+               transition: transform 0.3s, box-shadow 0.3s;
+               overflow: hidden;
+          }
+
+          .policy-box:hover {
+               transform: translateY(-5px);
+               box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+          }
+
+          .policy-content {
+               border-radius: 10px;
+               padding: 20px;
+          }
+
+          .policy-content i {
                margin-bottom: 15px;
           }
 
-
-          /* From Uiverse.io by alexmaracinaru */
-          .cta {
-               position: relative;
-               margin: auto;
-               padding: 12px 18px;
-               transition: all 0.2s ease;
-               border: none;
-               background: none;
-               cursor: pointer;
+          .policy-title {
+               font-size: 1.25rem;
+               font-weight: 600;
+               margin-bottom: 10px;
           }
 
-          .cta:before {
-               content: "";
-               position: absolute;
-               top: 0;
-               left: 0;
-               display: block;
-               border-radius: 50px;
-               background: #ffd277;
-               width: 45px;
-               height: 45px;
-               transition: all 0.3s ease;
+          .policy-text {
+               font-size: 1rem;
+               line-height: 1.6;
           }
 
-          .cta span {
-               position: relative;
-               font-family: "Ubuntu", sans-serif;
-               font-size: 18px;
-               font-weight: 700;
-               letter-spacing: 0.05em;
-               color: #fff;
+          @media (max-width: 768px) {
+               .policies-section h2 {
+                    font-size: 2rem;
+               }
+
+               .policy-content i {
+                    font-size: 2.5rem;
+               }
           }
 
-          .cta svg {
-               position: relative;
-               top: 0;
-               margin-left: 10px;
-               fill: none;
-               stroke-linecap: round;
-               stroke-linejoin: round;
-               stroke: #ffd277;
-               stroke-width: 2;
-               transform: translateX(-5px);
-               transition: all 0.3s ease;
+          @media (max-width:768px) {
+               .main_div {
+                    margin-top: 0px;
+               }
           }
 
-          .cta:hover:before {
-               width: 100%;
-               background: #ffd277;
+
+
+          /* Text Section */
+          .course-text {
+               display: flex;
+               flex-direction: column;
+               justify-content: center;
+               align-items: flex-start;
+               padding: 0 2rem;
+               animation: fadeIn 2s ease-out;
           }
 
-          .cta:hover svg {
-               transform: translateX(0);
+          .course-heading {
+               font-size: 1.2rem;
+               color: #013220;
+               font-weight: 500;
+               margin-bottom: 0.5rem;
+               opacity: 0;
+               transform: translateY(-20px);
+               animation: fadeInUp 1s forwards;
           }
 
-          .cta:active {
-               transform: scale(0.95);
+          .course-title {
+               font-size: 3rem;
+               font-weight: bold;
+               color: #013220;
+               margin-bottom: 1rem;
+               line-height: 1.3;
+               text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+               opacity: 0;
+               transform: translateY(-20px);
+               animation: fadeInUp 1.5s 0.2s forwards;
+          }
+
+          .course-description {
+               font-size: 1rem;
+               color: #000000;
+               font-weight: 400;
+               max-width: 80%;
+               opacity: 0;
+               transform: translateY(-20px);
+               animation: fadeInUp 2s 0.4s forwards;
+          }
+
+          /* Image Section */
+          .course-image img {
+               max-height: 500px;
+               object-fit: cover;
+               border-radius: 10px;
+               transition: transform 0.5s ease, box-shadow 0.3s ease;
+               opacity: 0;
+               animation: fadeInLeft 1.5s 0.5s forwards;
+          }
+
+          /* Hover effect for the image */
+          .course-image img:hover {
+               transform: scale(1.1);
+               box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+          }
+
+          /* Animations */
+          @keyframes fadeInUp {
+               to {
+                    opacity: 1;
+                    transform: translateY(0);
+               }
+          }
+
+          @keyframes fadeIn {
+               to {
+                    opacity: 1;
+               }
+          }
+
+          @keyframes fadeInLeft {
+               to {
+                    opacity: 1;
+                    transform: translateX(0);
+               }
+          }
+
+          /* Responsiveness */
+          @media (max-width: 768px) {
+               .course-title {
+                    font-size: 2.5rem;
+               }
+
+               .course-description {
+                    font-size: 0.9rem;
+                    max-width: 90%;
+               }
+
+               .course-heading {
+                    font-size: 1rem;
+               }
+
+               .course-image img {
+                    max-height: 400px;
+               }
+          }
+
+          @media (max-width: 576px) {
+               .course-text {
+                    padding: 2rem 0;
+               }
+
+               .course-title {
+                    font-size: 1.8rem;
+               }
+
+               .course-description {
+                    font-size: 0.9rem;
+                    max-width: 100%;
+               }
+
+               .course-image img {
+                    max-height: 300px;
+               }
+          }
+
+          .btn-custom2 {
+               background-color: #013220;
+               color: white;
+               border-radius: 25px;
+               font-weight: bold;
+          }
+
+          .btn:hover {
+               color: #FFD8B1;
+          }
+
+
+
+          .stat-item {
+               display: flex;
+               align-items: center;
+               margin-bottom: 30px;
+          }
+
+          p i {
+               color: #556B2F;
           }
      </style>
+
 </head>
 
-<body style="background-color: #1a1a1a;">
+<body>
+
      <!-- navbar -->
      <nav class="navbar navbar-expand-lg navbar-dark">
           <div class="container-fluid">
-               <a class="navbar-brand" href="#">WatchStore</a>
-               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+               <!-- Left Side: V2 -->
+               <img src="{{url_for('static' ,filename ='img/logoFinal.png')}}" alt="logo" style="height: 50px;">
+               <!-- Toggler for Small Screens -->
+               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon" style="border: none;"></span>
                </button>
-               <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav mx-auto">
+
+               <!-- Right Side: Links and User Info -->
+               <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
+                    <ul class="navbar-nav">
                          <li class="nav-item">
-                              <a class="nav-link" href="/">Home</a>
+                              <a class="nav-link" style="color: #ffffff;" href="/">Home</a>
                          </li>
                          <li class="nav-item">
-                              <a class="nav-link" href="/about_us/">About Us</a>
+                              <a class="nav-link" style="color: #ffffff;" href="/about_us/">About Us</a>
                          </li>
                          <li class="nav-item">
-                              <a class="nav-link" href="/show_product/">Products</a>
+                              <a class="nav-link" style="color: #ffffff;" href="/product/">Products</a>
                          </li>
                          <li class="nav-item">
-                              <a class="nav-link" href="/blogs/">Blog</a>
+                              <a class="nav-link" style="color: #ffffff;" href="/blogs/">Blog</a>
                          </li>
                          <li class="nav-item">
-                              <a class="nav-link" href="/login/">Account</a>
+                              <a class="nav-link" style="color: #ffffff;" href="/login/">Account</a>
+                         </li>
+                         <li class="nav-item">
+                              <a href="/cart/" class="nav-link">
+                                   <!-- /* From Uiverse.io by Julian956 */ -->
+                                   <button data-quantity=" " class="btn-cart">
+                                        <svg class="icon-cart" viewBox="0 0 24.38 30.52" height="30.52" width="24.38"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                             <title>icon-cart</title>
+                                             <path transform="translate(-3.62 -0.85)"
+                                                  d="M28,27.3,26.24,7.51a.75.75,0,0,0-.76-.69h-3.7a6,6,0,0,0-12,0H6.13a.76.76,0,0,0-.76.69L3.62,27.3v.07a4.29,4.29,0,0,0,4.52,4H23.48a4.29,4.29,0,0,0,4.52-4ZM15.81,2.37a4.47,4.47,0,0,1,4.46,4.45H11.35a4.47,4.47,0,0,1,4.46-4.45Zm7.67,27.48H8.13a2.79,2.79,0,0,1-3-2.45L6.83,8.34h3V11a.76.76,0,0,0,1.52,0V8.34h8.92V11a.76.76,0,0,0,1.52,0V8.34h3L26.48,27.4a2.79,2.79,0,0,1-3,2.44Zm0,0">
+                                             </path>
+                                        </svg>
+                                        <span class="quantity"></span>
+                                   </button>
+
+                              </a>
                          </li>
                          {% if username %}
                          <li class="nav-item">
-                              <a class="nav-link" href="/logout/">Logout</a>
+                              <a href="#" class="nav-link" style="color: #ffffff;"> Hi {{ username}}!</a>
+
+
+                         </li>
+                         <li class="nav-item">
+                              <a href="/logout/">
+
+                                   <button class="Btnn">
+
+                                        <div class="sign"><svg viewBox="0 0 512 512">
+                                                  <path
+                                                       d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z">
+                                                  </path>
+                                             </svg></div>
+
+                                        <div class="text">Logout</div>
+                                   </button>
+
+
+
+                              </a>
                          </li>
                          {% endif %}
                     </ul>
-               </div>
-               <div class="d-flex align-items-center">
-                    <a href="/cart/"><i class="fa-solid fa-cart-shopping cart-icon"></i></a>
-                    {% if username %}
-                    <p class="user-greeting">Hi {{username}}!</p>
-                    {% endif %}
                </div>
           </div>
      </nav>
 
 
-
-
      <!-- banner -->
-     <div class="container">
-          <div class="row mt-4">
-               <div class="col-md-6">
-                    <h4 class="display-3 mt-3" style="color: #F9F9F9;">Smart Time <br>For Smart Kid</h4>
-                    <p class="mt-3" style="color: #e2c044;">Every watch has a sole and a story to be told.</p>
-                    <p class="mt-4" style="color:#e2dada;">" The World's first circular program for watches. Let's keep
-                         watches on wrists and out of landfills.Send us back any watch from any brand and we'll
-                         responsibly recycle it and keep its legacy going. "</p>
-                    <a href="/show_product/"><button class="Btn mt-4"></button></a>
+     <div class="container-fluid top-demanded-course mt-4">
+          <div class="row">
+               <div class="col-md-6 course-text">
+                    <h4 class="display-6 course-heading">EXPLORE EXCLUSIVE DEALS</h4>
+                    <h4 class="display-4 course-title">Shop the Trendiest Collections at Unbeatable Prices with V2!</h4>
+                    <p class="course-description">
+                         Welcome to Value & Variety Mall, where style meets affordability. Discover a wide range of
+                         premium
+                         products, from the latest trends to everyday essentials, all under one roof.
+                    </p>
+                    <a href="/product/" class="btn btn-custom2">
+                         Shop Now <i class="fa-solid fa-arrow-right mt-2"></i>
+                    </a>
                </div>
-               <div class="col-md-6">
-                    <img src="{{url_for('static', filename='img/banner.png')}}" alt="portrait banner"
-                         style="width: 100%; height: 100%; object-fit: cover;">
+               <div class="col-md-6 course-image">
+                    <img src="{{url_for('static', filename='img/banner.png')}}" alt="Coding Journey"
+                         class="img-fluid animated-image">
                </div>
           </div>
      </div>
 
-    
 
-     <!-- Trust and Fast Delivery Section -->
-     <section class="trust-delivery-section py-5">
+
+     <!-- featured product -->
+
+     <section class="featured-products py-5">
           <div class="container">
-               <h2 class="text-center mb-4 display-6" style="color: #e2c044;">Policies</h2>
-               <div class="row text-center">
-                    <div class="col-md-6 mb-3">
-                         <!-- Trust and Certification -->
-                         <div class="card trust-card bg-dark text-light p-4 h-100">
-                              <div class="card-body">
-                                   <i class="fas fa-shield-alt fa-3x text-warning mb-3"></i>
-                                   <h5 class="card-title" style="color: #e2c044;">Trust and Certification</h5>
-                                   <p class="card-text">We are certified by international standards ensuring the quality
-                                        and authenticity of every product we offer. Shop with confidence at Watch Store.
-                                   </p>
+               <h2 class="text-center mb-5 display-4" style="color: #013220;">Featured Products</h2>
+               <div class="row g-4">
+                    <!-- Card 1 -->
+                    <div class="col-md-3 col-sm-6">
+                         <div class="card shadow border-0">
+                              <a href="/show_product/Tops"><img src="{{url_for('static' ,filename ='img/top1.png')}}"
+                                        class="card-img-top" alt="Stylish Tops"></a>
+
+                              <div class="card-body text-center">
+                                   <p class="card-text text-dark h6">Stylish Tops</p>
                               </div>
                          </div>
                     </div>
-                    <div class="col-md-6 mb-3">
-                         <!-- Fast Delivery -->
-                         <div class="card delivery-card bg-dark text-light p-4 h-100">
-                              <div class="card-body">
-                                   <i class="fas fa-truck fa-3x text-warning mb-3"></i>
-                                   <h5 class="card-title" style="color: #e2c044;">Fast Delivery</h5>
-                                   <p class="card-text">Enjoy express delivery services across the globe. Get your
-                                        favorite timepiece delivered right to your doorstep in record time.</p>
+                    <!-- Card 2 -->
+                    <div class="col-md-3 col-sm-6">
+                         <div class="card shadow border-0">
+                              <a href="/show_product/Bottoms"> <img
+                                        src="{{url_for('static' ,filename ='img/bottom.webp')}}" class="card-img-top"
+                                        alt="Fashionable Bottoms"></a>
+                              <div class="card-body text-center">
+                                   <p class="card-text text-dark h6">Fashionable Bottoms</p>
+                              </div>
+                         </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="col-md-3 col-sm-6">
+                         <div class="card shadow border-0">
+                              <a href="/show_product/Jackets"><img
+                                        src="{{url_for('static' ,filename ='img/jacket.png')}}" class="card-img-top"
+                                        alt="Trendy Jackets"></a>
+
+                              <div class="card-body text-center">
+                                   <p class="card-text text-dark h6">Trendy Jackets</p>
+                              </div>
+                         </div>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="col-md-3 col-sm-6">
+                         <div class="card shadow border-0">
+                              <a href="/show_product/Accessories"><img
+                                        src="{{url_for('static' ,filename ='img/pend.png')}}" class="card-img-top"
+                                        alt="Accessories"></a>
+                              <div class="card-body text-center">
+                                   <p class="card-text text-dark h6">Accessories</p>
                               </div>
                          </div>
                     </div>
@@ -283,90 +523,294 @@
      </section>
 
 
-     <!-- banner new arrivals  -->
-     <div class="container" >
-          <div class="row mt-4">
-               <div class="col-md-6 mt-5">
-                    <a href="/show_product/">
-                         <button class="cta">
-                              <span>New Arrivals</span>
-                              <svg width="15px" height="10px" viewBox="0 0 13 10">
-                                   <path d="M1,5 L11,5"></path>
-                                   <polyline points="8 1 12 5 8 9"></polyline>
-                              </svg>
-                         </button>
-                    </a>
-                    <h2 class="mt-5 display-6" style="color: #e2dada;">
-                         Best sellers <br> TopNotch Quality <br> Most Popular <br> Luxury <br>Hottest Brands
-                    </h2>
-               </div>
-               <div class="col-md-6">
-                    <img src="{{url_for('static', filename='img/neww.png')}}" alt="portrait banner"
-                         style="width: 100%; height: 80%; object-fit: cover;">
+     <!-- New Arrival Section -->
+     <section class="new-arrival-section py-5">
+          <div class="container">
+               <div class="row align-items-center">
+                    <!-- Image Section -->
+                    <div class="col-md-6 mb-3">
+                         <img src="{{url_for('static', filename='img/new-arrival.png')}}" alt="New Arrival"
+                              class="img-fluid rounded shadow">
+                    </div>
+                    <!-- Text Section -->
+                    <div class="col-md-6 text-center text-md-start">
+                         <h2 class="fw-bold" style="color: #013220;">New Arrival</h2>
+                         <p class="mt-3" style="color: #000000; font-size: 1rem;">
+                              Discover the latest trends that redefine style and elegance. Explore our exclusive
+                              collection of trendy products now available at V2 Mall.Elevate your wardrobe with our
+                              exclusive new arrivals! Our latest collection combines timeless elegance with modern
+                              trends, ensuring you stand out in every moment. Each piece is crafted with precision,
+                              offering unparalleled quality and style. Whether you’re looking for a sleek accessory or a
+                              bold fashion statement, we’ve got something for everyone. Experience the essence of
+                              luxury, designed just for you.
+                         </p>
+                         <a href="/show_product/NewArrivals" class="btn btn-custom2">Explore Now</a>
+                    </div>
                </div>
           </div>
-     </div>
+     </section>
 
-     <!-- Testimonial Section -->
-     <section class="testimonial-section text-light py-5" >
+
+     <!-- trust and delievery -->
+     <section class="policies-section py-5">
           <div class="container">
-               <h2 class="text-center mb-4">What Our Customers Say</h2>
-               <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+               <h2 class="text-center mb-5 display-4" style="color: #013220;">Our Policies</h2>
+               <div class="row g-4 text-center">
+                    <!-- Trust and Certification -->
+                    <div class="col-md-4">
+                         <div class="policy-box shadow p-4 h-100">
+                              <div class="policy-content">
+                                   <i class="fas fa-shield-alt fa-3x mb-3" style="color:#556B2F ;"></i>
+                                   <h5 class="policy-title" style="color: #013220;">Trust and Certification</h5>
+                                   <p class="policy-text" style="color: #000000;">Certified by international standards
+                                        to ensure quality and
+                                        authenticity. Shop with confidence!</p>
+                              </div>
+                         </div>
+                    </div>
+                    <!-- Fast Delivery -->
+                    <div class="col-md-4">
+                         <div class="policy-box shadow p-4 h-100">
+                              <div class="policy-content">
+                                   <i class="fas fa-truck fa-3x mb-3" style="color: #556B2F;"></i>
+                                   <h5 class="policy-title" style="color: #013220;">Fast Delivery</h5>
+                                   <p class="policy-text" style="color: #000000;">Express delivery worldwide. Get your
+                                        favorite products at your
+                                        doorstep in record time.</p>
+                              </div>
+                         </div>
+                    </div>
+                    <!-- Easy Returns -->
+                    <div class="col-md-4">
+                         <div class="policy-box shadow p-4 h-100">
+                              <div class="policy-content">
+                                   <i class="fas fa-undo-alt fa-3x mb-3" style="color: #556B2F"></i>
+                                   <h5 class="policy-title" style="color: #013220;">Easy Returns</h5>
+                                   <p class="policy-text" style="color: #000000;">Hassle-free return policy. If you're
+                                        not satisfied, returning
+                                        is simple and quick.</p>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </section>
+
+
+
+     <!-- About mall -->
+     <section class="new-arrival-section py-5">
+          <div class="container">
+              <div class="row align-items-center">
+                  <!-- Text Section -->
+                  <div class="col-md-6 text-center text-md-start">
+                      <h2 class="fw-bold" style="color: #013220;">About Value & Variety</h2>
+                      <p class="mt-3" style="color: #000000; font-size: 1rem;">
+                          V2 Mall is your one-stop destination for a premium online shopping experience. Known for its wide range of high-quality products, V2 Mall offers everything from the latest fashion trends to timeless accessories, all at competitive prices. Designed to cater to modern, style-conscious shoppers, it combines convenience with class, ensuring that every purchase feels like a special occasion.
+                      </p>
+                      <h2 class="fw-bold" style="color: #013220;">What we do?</h2>
+                      <p class="mt-3" style="color: #000000; font-size: 1rem;">Our mission is to redefine the online shopping experience by ensuring convenience, exceptional service, and a focus on customer satisfaction. Whether you’re searching for the latest trends or timeless classics, we are here to bring value and variety to your shopping journey.</p>
+                  </div>
+                  <!-- Image Section -->
+                  <div class="col-md-6 mb-3">
+                      <img src="{{url_for('static', filename='img/about.png')}}" alt="About mall"
+                           class="img-fluid rounded shadow">
+                  </div>
+              </div>
+      
+              <!-- Stats Section -->
+              <div class="row text-center mt-5">
+                  <!-- Stat 1 -->
+                  <div class="col-md-4">
+                      <h3 class="fw-bold" style="color: #013220;">
+                          <span class="counter" data-target="10000">0</span>+
+                      </h3>
+                      <p style="color: #000000; font-size: 1rem;">
+                          Happy Customers  
+                          We’re proud to have served thousands of satisfied shoppers.
+                      </p>
+                  </div>
+                  <!-- Stat 2 -->
+                  <div class="col-md-4">
+                      <h3 class="fw-bold" style="color: #013220;">
+                          <span class="counter" data-target="500">0</span>+
+                      </h3>
+                      <p style="color: #000000; font-size: 1rem;">
+                          Products Sold  
+                          Our diverse product range has something for everyone.
+                      </p>
+                  </div>
+                  <!-- Stat 3 -->
+                  <div class="col-md-4">
+                      <h3 class="fw-bold" style="color: #013220;">
+                          <span class="counter" data-target="1000">0</span>+
+                      </h3>
+                      <p style="color: #000000; font-size: 1rem;">
+                          Repeat Buyers  
+                          Our customers love shopping with us again and again.
+                      </p>
+                  </div>
+              </div>
+          </div>
+     </section>
+      
+      <!-- Add JavaScript for Number Animation -->
+     <script>
+          // Function to animate numbers
+          const counters = document.querySelectorAll('.counter');
+          const speed = 200; // Adjust speed (higher = slower animation)
+      
+          counters.forEach(counter => {
+              const animate = () => {
+                  const target = +counter.getAttribute('data-target');
+                  const count = +counter.innerText;
+      
+                  const increment = target / speed;
+      
+                  if (count < target) {
+                      counter.innerText = Math.ceil(count + increment);
+                      setTimeout(animate, 1);
+                  } else {
+                      counter.innerText = target; // Ensure the exact target number is displayed
+                  }
+              };
+              animate();
+          });
+     </script>
+      
+
+
+
+
+
+
+
+     <!-- Testimonials Section -->
+     <section class="testimonial-section text-dark py-5 mt-3">
+          <div class="container">
+               <h2 class="text-center mb-5 fw-bold" style="color: #013220;">What Our Customers Say</h2>
+               <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
                     <div class="carousel-inner">
-                         <!-- Testimonial Item 1 -->
+                         <!-- Testimonial Item Group 1 -->
                          <div class="carousel-item active">
-                              <div class="row justify-content-center">
-                                   <div class="col-md-6 text-center">
-                                        <img src="{{url_for('static' ,filename ='img/customer1.png')}}"
-                                             class="rounded-circle mb-3" alt="Customer 1" width="100" height="100">
-                                        <h5 class="fw-bold">Farhat Aara</h5>
-                                        <p class="text-warning">
+                              <div class="row">
+                                   <!-- Testimonial 1 -->
+                                   <div class="col-md-4 text-center">
+                                        <img src="{{url_for('static', filename='img/customer1.png')}}"
+                                             class="rounded-circle mb-3 shadow" alt="Customer 1" width="auto"
+                                             height="200">
+                                        <h5 class="fw-bold" style="color:#013220;">Yasmin</h5>
+                                        <p class="text-warning mb-2" style="color: #556B2F;">
                                              <i class="fas fa-star"></i>
                                              <i class="fas fa-star"></i>
                                              <i class="fas fa-star"></i>
                                              <i class="fas fa-star"></i>
                                              <i class="fas fa-star-half-alt"></i>
                                         </p>
-                                        <p>"Absolutely love the watches! Exceptional quality and fast delivery. Highly
-                                             recommend."</p>
+                                        <p class="testimonial-text" style="color: #000000;  font-size: 0.9rem;">
+                                             "The watches I bought from V2 Mall are stunning! Exceptional quality and
+                                             timely delivery.
+                                             Highly recommend to everyone!"
+                                        </p>
                                    </div>
-                              </div>
-                         </div>
-                         <!-- Testimonial Item 2 -->
-                         <div class="carousel-item">
-                              <div class="row justify-content-center">
-                                   <div class="col-md-6 text-center">
-                                        <img src="{{url_for('static' ,filename ='img/customer2.png')}}"
-                                             class="rounded-circle mb-3" alt="Customer 2" width="100" height="100">
-                                        <h5 class="fw-bold">Jane Smith</h5>
-                                        <p class="text-warning">
+                                   <!-- Testimonial 2 -->
+                                   <div class="col-md-4 text-center">
+                                        <img src="{{url_for('static', filename='img/customer2.png')}}"
+                                             class="rounded-circle mb-3 shadow" alt="Customer 2" width="auto"
+                                             height="200">
+                                        <h5 class="fw-bold" style="color:#013220;">Faizal Imam</h5>
+                                        <p class="text-warning mb-2" style="color: #556B2F;">
                                              <i class="fas fa-star"></i>
                                              <i class="fas fa-star"></i>
                                              <i class="fas fa-star"></i>
                                              <i class="fas fa-star"></i>
                                              <i class="fas fa-star"></i>
                                         </p>
-                                        <p>"WatchStore has the best collection ever! Their recycling initiative is
-                                             amazing."</p>
+                                        <p class="testimonial-text" style="color: #000000; font-size: 0.9rem;">
+                                             "Absolutely love the variety at V2 Mall! Their sustainability efforts make
+                                             shopping here
+                                             even more satisfying."
+                                        </p>
                                    </div>
-                              </div>
-                         </div>
-                         <!-- Testimonial Item 3 -->
-                         <div class="carousel-item">
-                              <div class="row justify-content-center">
-                                   <div class="col-md-6 text-center">
-                                        <img src="{{url_for('static' ,filename ='img/customer3.png')}}"
-                                             class="rounded-circle mb-3" alt="Customer 3" width="100" height="100">
-                                        <h5 class="fw-bold">Yasmin</h5>
-                                        <p class="text-warning">
+                                   <!-- Testimonial 3 -->
+                                   <div class="col-md-4 text-center">
+                                        <img src="{{url_for('static', filename='img/customer4.png')}}"
+                                             class="rounded-circle mb-3 shadow" alt="Customer 3" width="auto"
+                                             height="200">
+                                        <h5 class="fw-bold" style="color: #013220">Firdous Fatima</h5>
+                                        <p class="text-warning mb-2" style="color: #556B2F;">
                                              <i class="fas fa-star"></i>
                                              <i class="fas fa-star"></i>
                                              <i class="fas fa-star"></i>
                                              <i class="fas fa-star"></i>
                                              <i class="fas fa-star-half-alt"></i>
                                         </p>
-                                        <p>"Great customer service and the watches are worth every penny. Will buy
-                                             again!"</p>
+                                        <p class="testimonial-text" style="color: #000000; font-size: 0.9rem;">
+                                             "I had a wonderful shopping experience! The delivery was fast, and the
+                                             products were exactly as described. Definitely coming back for more."
+                                        </p>
+                                   </div>
+                              </div>
+                         </div>
+                         <!-- Testimonial Item Group 2 -->
+                         <div class="carousel-item">
+                              <div class="row">
+                                   <!-- Testimonial 2 -->
+                                   <div class="col-md-4 text-center">
+                                        <img src="{{url_for('static', filename='img/customer5.png')}}"
+                                             class="rounded-circle mb-3 shadow" alt="Customer 2" width="auto"
+                                             height="200">
+                                        <h5 class="fw-bold" style="color: #013220">Sukanya Mishara</h5>
+                                        <p class="text-warning mb-2" style="color: #556B2F;">
+                                             <i class="fas fa-star"></i>
+                                             <i class="fas fa-star"></i>
+                                             <i class="fas fa-star"></i>
+                                             <i class="fas fa-star"></i>
+                                             <i class="fas fa-star"></i>
+                                        </p>
+                                        <p class="testimonial-text" style="color: #000000; font-size: 0.9rem;">
+                                             "I was amazed by the attention to detail in the products. V2 Mall truly
+                                             knows how to make their customers feel valued. Excellent service and
+                                             quality!"
+                                        </p>
+                                   </div>
+                                   <!-- Testimonial 3 -->
+                                   <div class="col-md-4 text-center">
+                                        <img src="{{url_for('static', filename='img/customer6.png')}}"
+                                             class="rounded-circle mb-3 shadow" alt="Customer 3" width="auto"
+                                             height="200">
+                                        <h5 class="fw-bold" style="color: #013220;">Saif Ali</h5>
+                                        <p class="text-warning mb-2" style="color: #556B2F;">
+                                             <i class="fas fa-star"></i>
+                                             <i class="fas fa-star"></i>
+                                             <i class="fas fa-star"></i>
+                                             <i class="fas fa-star"></i>
+                                             <i class="fas fa-star-half-alt"></i>
+                                        </p>
+                                        <p class="testimonial-text" style="color: #000000; font-size: 0.9rem;">
+                                             "I was amazed by the attention to detail in the products. V2 Mall truly
+                                             knows how to make their customers feel valued. Excellent service and
+                                             quality!"
+                                        </p>
+                                   </div>
+                                   <!-- Testimonial 1 -->
+                                   <div class="col-md-4 text-center">
+                                        <img src="{{url_for('static', filename='img/customer3.png')}}"
+                                             class="rounded-circle mb-3 shadow" alt="Customer 1" width="auto"
+                                             height="200">
+                                        <h5 class="fw-bold" style="color: #013220;">Abhilasha</h5>
+                                        <p class="text-warning mb-2" style="color: #556B2F;">
+                                             <i class="fas fa-star"></i>
+                                             <i class="fas fa-star"></i>
+                                             <i class="fas fa-star"></i>
+                                             <i class="fas fa-star"></i>
+                                             <i class="fas fa-star-half-alt"></i>
+                                        </p>
+                                        <p class="testimonial-text" style="color: #000000; font-size: 0.9rem;">
+                                             "The watches I bought from V2 Mall are stunning! Exceptional quality and
+                                             timely delivery.
+                                             Highly recommend to everyone!"
+                                        </p>
                                    </div>
                               </div>
                          </div>
@@ -387,64 +831,58 @@
      </section>
 
 
-     <!-- banner -->
-     <h2 class="text-center mb-4 mt-4" style="color: #e2c044; font-weight:bold">Featured Products</h2>
 
-     <a href="/show_product/"><img 
-          src="{{ url_for('static', filename='img/indexBanner.png') }}" 
-          alt="About Us Banner" 
-          class="img-fluid rounded shadow" 
-          style="width: 100%; height: 100%; object-fit: cover;"></a>
-     
 
 
 
 
      <!-- footer -->
-     <footer class="bg-dark text-light pt-5 pb-3" style="background-color: #161212;">
+     <footer class=" text-light pt-5 pb-3 ">
           <div class="container">
                <div class="row">
                     <!-- About Section -->
                     <div class="col-md-4">
-                         <h5 class="text-uppercase mb-4" style="color: #e2c044;">About Us</h5>
+                         <h5 class="text-uppercase mb-4" style="color: #FFFFFF;">About Us</h5>
                          <p>
-                              Welcome to Watch Store, your ultimate destination for luxury and stylish timepieces.
-                              Explore our exclusive collection and find the perfect watch to complement your style.
+                              Welcome to V2 Mall, your ultimate destination for a premium shopping experience. We bring
+                              you a diverse range of quality products from trusted brands, ensuring satisfaction with
+                              every purchase. we aim to make your experience effortless and enjoyable. Discover the joy
+                              of shopping with us today!
                          </p>
                     </div>
                     <!-- Quick Links Section -->
                     <div class="col-md-4">
-                         <h5 class="text-uppercase mb-4" style="color: #e2c044;">Quick Links</h5>
+                         <h5 class="text-uppercase mb-4" style="color: #ffffff;">Quick Links</h5>
                          <ul class="list-unstyled">
-                              <li><a href="/" class="text-light text-decoration-none"><i
+                              <li><a href="/" class="text-decoration-none"><i
                                              class="fas fa-angle-right me-2"></i>Home</a></li>
-                              <li><a href="/about" class="text-light text-decoration-none"><i
+                              <li><a href="/about" class="text-decoration-none"><i
                                              class="fas fa-angle-right me-2"></i>About Us</a></li>
-                              <li><a href="/show_product/" class="text-light text-decoration-none"><i
+                              <li><a href="/show_product/" class="text-decoration-none"><i
                                              class="fas fa-angle-right me-2"></i>Products</a></li>
-                              <li><a href="/blog" class="text-light text-decoration-none"><i
+                              <li><a href="/blog" class="text-decoration-none"><i
                                              class="fas fa-angle-right me-2"></i>Blog</a></li>
-                              <li><a href="/contact" class="text-light text-decoration-none"><i
+                              <li><a href="/contact" class="text-decoration-none"><i
                                              class="fas fa-angle-right me-2"></i>Contact Us</a></li>
                          </ul>
                     </div>
                     <!-- Contact Section -->
                     <div class="col-md-4">
-                         <h5 class="text-uppercase mb-4" style="color: #e2c044;">Contact Us</h5>
-                         <p><i class="fas fa-map-marker-alt me-2"></i>123 Watch Avenue, New York, NY</p>
-                         <p><i class="fas fa-phone me-2"></i>+1 234 567 890</p>
-                         <p><i class="fas fa-envelope me-2"></i>info@watchstore.com</p>
+                         <h5 class="text-uppercase mb-4" style="color: #ffffff;">Contact Us</h5>
+                         <p><i class="fas fa-map-marker-alt me-2 aa"></i>123 Mall Avenue, New York, NY</p>
+                         <p><i class="fas fa-phone me-2 aa"></i>+1 234 567 890</p>
+                         <p><i class="fas fa-envelope me-2 aa"></i>info@v2mall.com</p>
                          <div class="social-icons mt-3">
-                              <a href="#" class="text-light me-3"><i class="fab fa-facebook-f"></i></a>
-                              <a href="#" class="text-light me-3"><i class="fab fa-twitter"></i></a>
-                              <a href="#" class="text-light me-3"><i class="fab fa-instagram"></i></a>
-                              <a href="#" class="text-light"><i class="fab fa-linkedin-in"></i></a>
+                              <a href="#" class="text-light me-3"><i class="fab fa-facebook-f aa"></i></a>
+                              <a href="#" class="text-light me-3"><i class="fab fa-twitter aa"></i></a>
+                              <a href="#" class="text-light me-3"><i class="fab fa-instagram aa"></i></a>
+                              <a href="#" class="text-light"><i class="fab fa-linkedin-in aa"></i></a>
                          </div>
                     </div>
                </div>
                <hr class="text-light">
                <div class="text-center">
-                    <p class="mb-0">&copy; 2025 Watch Store. All Rights Reserved.</p>
+                    <p class="mb-0">&copy; 2025 Value and variety Mall. Crafted with ❤️ by Firdous Fatima.</p>
                </div>
           </div>
      </footer>
@@ -454,7 +892,9 @@
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 
-     </script>
+          </script>
+
+
 </body>
 
 </html>

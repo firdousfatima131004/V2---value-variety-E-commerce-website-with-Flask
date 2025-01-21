@@ -1,0 +1,15 @@
+.cc{
+     background: linear-gradient(to bottom, #ffffff, #556B2F);
+     background-color: #556B2F;
+}
+.pbtn{
+     background-color: #013220;
+     color: #ffffff;
+}
+.pbtn:hover{
+     background-color: #556B2F;
+}
+.card:hover{
+     transform: translateY(-10px);
+     box-shadow: 0 14px 15px #000000;
+}

@@ -176,6 +176,24 @@
                                              required>{{mydata.productDesc}}</textarea>
                                    </div>
 
+                                   <!-- Product Category -->
+                                   <div class="mb-3">
+                                        <label for="productCategory" class="form-label">Category</label>
+                                        <select class="form-select" id="productCategory" name="category" required>
+                                             <option selected disabled>{{mydata.productCategory}}</option>
+                                             <option value="Tops">Tops</option>
+                                             <option value="Bottoms">Bottoms</option>
+                                             <option value="Jackets">Jackets</option>
+                                             <option value="Accessories">Accessories</option>
+                                             <option value="Makeup">Makeup</option>
+                                             <option value="Watches">Watches</option>
+                                             <option value="Electronics">Electronics</option>
+                                             <option value="NewArrivals">New Arrivals</option>
+                                        </select>
+                                   </div>
+
+
+
                                    <!-- Product Price -->
                                    <div class="mb-3">
                                         <label for="productPrice" class="form-label">Price (₹)</label>
@@ -184,7 +202,7 @@
                                              value="{{mydata.productPrice}}">
                                    </div>
 
-                                   
+
                                    <!-- Product Image -->
                                    <div class="mb-3">
                                         <label for="productImage" class="form-label">Upload Image 1</label>

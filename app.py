@@ -62,7 +62,7 @@ def signup():
           new_user=User(username=uname,email=email,role=role,password=hashed_password, phone = phone)
           
           #admin
-        #   new_admin=User(username="admin",email="admin@jewelerry.in",role='admin',password=generate_password_hash('admin@123'), phone= "1234567897")
+        #   new_admin=User(username="admin",email="admin@mall.in",role='admin',password=generate_password_hash('admin@123'), phone= "1234567897")
         #   db_session.add(new_admin)
         #   db_session.commit()
           try:
@@ -98,6 +98,7 @@ def add_product():
         product_name = request.form.get('pname')
         product_desc = request.form.get('desc')
         product_price = request.form.get('pprice')
+        Category = request.form.get('category')
 
         # Handling image uploads
         img_files = [request.files.get(f'img{i}') for i in range(1, 6)]  
@@ -114,6 +115,7 @@ def add_product():
             new_product = Product(
                 productname=product_name,
                 productDesc=product_desc,
+                productCategory = Category,
                 productPrice=float(product_price),
                 img1=saved_paths[0],
                 img2=saved_paths[1],
@@ -176,13 +178,23 @@ def blog():
 
     return render_template('add_blog.html', username=username)
 
-#showing product
-@app.route('/show_product/', methods=['GET'])
-def show_product():
+
+#show product
+@app.route('/show_product/<string:category>', methods=['GET'])
+def show_product(category):
     username = session.get('username')
     role = session.get('role')
-    products = db_session.query(Product).all()
-    return render_template('view_product.html', products=products, username=username ,role = role)
+    products = db_session.query(Product).filter_by(productCategory=category).all()
+    return render_template('show_products.html', products=products, category=category, username=username , role=role)
+
+
+#viewing product page
+@app.route('/product/')
+def products():
+     username=session.get('username')
+     return render_template('view_product.html',username=username)
+
+
 
 #show blog page
 @app.route("/blogs/")
@@ -340,6 +352,7 @@ def add_to_cart(product_id):
 #view cart
 @app.route('/cart/')
 def view_cart():
+    username = session.get('username')
 #     if 'username' not in session:
 #         return redirect(url_for('login'))
 
@@ -347,7 +360,7 @@ def view_cart():
     cart_items = db_session.query(Cart).filter_by(user_id=user_id).all()
 
     total = sum(item.product.productPrice * item.quantity for item in cart_items)
-    return render_template('cart.html', cart_items=cart_items, total=total)
+    return render_template('cart.html', cart_items=cart_items, total=total, username=username)
 
 #remove from cart
 @app.route('/remove_from_cart/<int:item_id>', methods=['POST'])
@@ -374,6 +387,16 @@ def  detail(i):
     data = db_session.query(Product).get(i)
     return render_template('product_detail.html', mydata = data)
 
+
+#forgot password
+@app.route('/forgot-password/')
+def forgot_email():
+    return render_template('email.html')
+
+
+@app.route('/aaa/')
+def aa():
+    return render_template('admin_base.html')
 
      
      

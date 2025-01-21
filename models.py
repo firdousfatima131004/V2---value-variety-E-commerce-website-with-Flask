@@ -21,6 +21,7 @@ class Product(Base):
     productname = Column(String, nullable=False)
     productDesc = Column(String, nullable=False)
     productPrice = Column(Float, nullable=False)
+    productCategory = Column(String(150) , nullable=False)
     img1 = Column(String, nullable=False)
     img2 = Column(String, nullable=False)
     img3 = Column(String, nullable=False)

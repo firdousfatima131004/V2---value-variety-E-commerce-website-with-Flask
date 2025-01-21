@@ -1,290 +1,86 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Watch Store</title>
-     <!-- Bootstrap CSS -->
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+{% block abc %}
 
-     <!-- Font Awesome -->
-     <script src="https://kit.fontawesome.com/b755c6ef44.js" crossorigin="anonymous"></script>
-
-     <!-- Google Fonts -->
-     <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;700&display=swap" rel="stylesheet">
-
-     <!-- css link-->
-     <link rel="stylesheet" href="{{url_for('static' ,filename ='css/style.css')}}">
-
-     <style>
-          .why-card {
-               background-color: #222;
-               /* Match your website's dark background */
-               border: none;
-               padding: 20px;
-               border-radius: 10px;
-               transition: transform 0.3s, box-shadow 0.3s;
-          }
-
-          .why-card:hover {
-               transform: translateY(-10px);
-               box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
-          }
-
-          .why-card .icon {
-               font-size: 40px;
-               color: #e2c044;
-               /* Accent color for the icons */
-          }
-
-          .why-card .card-title {
-               font-family: 'Roboto', sans-serif;
-               font-weight: 700;
-          }
-
-          .why-card .card-text {
-               font-family: 'Roboto', sans-serif;
-               font-size: 14px;
-          }
-
-          .text-light {
-               color: #f9f9f9 !important;
-          }
-
-          .text-muted {
-               color: #aaa !important;
-          }
-
-
-          .about-us-section {
-               background-color: #222;
-               /* Matches the dark theme of your site */
-               padding: 40px 20px;
-               border-radius: 10px;
-               box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
-          }
-
-          .about-img {
-               border-radius: 10px;
-               box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
-          }
-
-          .about-us-section h2,
-          .about-us-section h3,
-          .about-us-section h4 {
-               font-family: 'Roboto', sans-serif;
-               font-weight: bold;
-               color: #f9f9f9;
-          }
-
-          .about-us-section p {
-               font-family: 'Roboto', sans-serif;
-               font-size: 16px;
-               color: #aaa;
-               /* Light gray text for better readability */
-               line-height: 1.6;
-          }
-
-          .text-light {
-               color: #f9f9f9 !important;
-          }
-
-          .text-muted {
-               color: #aaa !important;
-          }
-
-          .about-us-section img:hover {
-               transform: scale(1.02);
-               transition: transform 0.3s ease;
-          }
-     </style>
-
-</head>
-
-<body style="background-color: #1a1a1a;">
-     <!-- navbar -->
-     <nav class="navbar navbar-expand-lg navbar-dark">
-          <div class="container-fluid">
-               <a class="navbar-brand" href="#">WatchStore</a>
-               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-               </button>
-               <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav mx-auto">
-                         <li class="nav-item">
-                              <a class="nav-link" href="/">Home</a>
-                         </li>
-                         <li class="nav-item">
-                              <a class="nav-link" href="/about_us/">About Us</a>
-                         </li>
-                         <li class="nav-item">
-                              <a class="nav-link" href="/show_product/">Products</a>
-                         </li>
-                         <li class="nav-item">
-                              <a class="nav-link" href="/blogs/">Blog</a>
-                         </li>
-                         <li class="nav-item">
-                              <a class="nav-link" href="/login/">Account</a>
-                         </li>
-                         {% if username %}
-                         <li class="nav-item">
-                              <a class="nav-link" href="/logout/">Logout</a>
-                         </li>
-                         {% endif %}
-                    </ul>
-               </div>
-               <div class="d-flex align-items-center">
-                    <a href="/cart/"><i class="fa-solid fa-cart-shopping cart-icon"></i></a>
-                    {% if username %}
-                    <p class="user-greeting">Hi {{username}}!</p>
-                    {% endif %}
-               </div>
-          </div>
-     </nav>
-
-
-
-     <!-- banner -->
-     <h2 class="mt-3 text-center" style="color: #e2c044;">About Us</h2>
+<h1 class="text-center mt-5" style="color: #013220;">About Us</h1>
+<!-- banner -->
+<section class="about-us-section py-5" style="background-color: #f9f9f9;">
      <div class="container">
-          <div class="row mt-4">
-               <div class="col-md-6">
-                    <img src="{{url_for('static', filename='img/newww.png')}}" alt="portrait banner"
-                         style="width: 100%; height: 100%; object-fit: cover;">
-               </div>
-               <div class="col-md-6 mt-5">
-                    <h3 class="mb-3" style="color: #e2c044;">Who We Are</h3>
-                    <p class="text-muted">
-                         At <strong>Timeless Watches</strong>, we are passionate about creating exquisite timepieces
-                         that reflect both luxury and precision.
-                         With a rich legacy of craftsmanship, our watches blend tradition with modernity to suit every
-                         style and occasion.
-                    </p>
-                    <h4 class="mt-4" style="color: #e2c044;">Our Mission</h4>
-                    <p class="text-muted">
-                         To redefine elegance through premium quality watches, providing timeless designs that transcend
-                         trends and stand as a symbol of sophistication.
-                    </p>
-                    <h4 class="mt-4" style="color: #e2c044;">Our Vision</h4>
-                    <p class="text-muted">
-                         To become the leading global brand in luxury watches by delivering exceptional quality and
-                         unparalleled customer satisfaction.
-                    </p>
-               </div>
-               
-          </div>
+         <div class="row align-items-center">
+             <!-- Text Section -->
+             <div class="col-md-6 text-center text-md-start">
+                 <h2 class="fw-bold mb-4" style="color: #013220;">Who we are / What we do</h2>
+                 <p style="color: #000000; font-size: 1.1rem; line-height: 1.8;">
+                     Our journey is built on the commitment to deliver excellence. We take pride in offering a platform that blends 
+                     <strong>affordability</strong> with <strong>premium quality</strong>, ensuring every product meets the highest standards. 
+                     With a customer-first approach, we continuously innovate and expand our offerings to provide a seamless shopping experience for everyone.
+                 </p>
+                 <p style="color: #000000; font-size: 1.1rem; line-height: 1.8;">
+                     Whether you're looking for the latest trends, timeless classics, or everyday essentials, V2 Mall is here to make your 
+                     shopping experience delightful and fulfilling.
+                 </p>
+                 <p class="fw-bold" style="color: #013220; font-size: 1.2rem;">
+                     Shop smart, live stylishly—with V2 Mall.
+                 </p>
+             </div>
+             <!-- Image Section -->
+             <div class="col-md-6 text-center">
+                 <img src="{{url_for('static', filename='img/aboutus.png')}}" alt="About Us" class="img-fluid ">
+             </div>
+         </div>
      </div>
+</section>
 
-
-     
-
-
-
-
-
-     <!-- main content -->
-     <div class="container mt-5">
-          <h2 class="text-center text-light mb-4">Why Choose Us?</h2>
-          <div class="row">
-               <div class="col-md-4 mb-3">
-                    <div class="card why-card text-center">
-                         <div class="card-body">
-                              <div class="icon mb-3">
-                                   <i class="fa-solid fa-clock"></i>
-                              </div>
-                              <h4 class="card-title text-light">Exquisite Craftsmanship</h4>
-                              <p class="card-text text-muted">Every watch is meticulously designed and crafted to ensure
-                                   unparalleled quality and elegance.</p>
-                         </div>
-                    </div>
-               </div>
-               <div class="col-md-4 mb-3">
-                    <div class="card why-card text-center">
-                         <div class="card-body">
-                              <div class="icon mb-3">
-                                   <i class="fas fa-leaf"></i>
-                              </div>
-                              <h4 class="card-title text-light">Ethically Sourced</h4>
-                              <p class="card-text text-muted">We prioritize sustainability by using responsibly sourced
-                                   materials, ensuring beauty with a conscience.</p>
-                         </div>
-                    </div>
-               </div>
-               <div class="col-md-4 mb-3">
-                    <div class="card why-card text-center">
-                         <div class="card-body">
-                              <div class="icon mb-3">
-                                   <i class="fas fa-heart"></i>
-                              </div>
-                              <h4 class="card-title text-light">Timeless Designs</h4>
-                              <p class="card-text text-muted">Our watches capture the essence of timeless beauty,
-                                   blending tradition and modernity for every occasion.</p>
-                         </div>
-                    </div>
-               </div>
-          </div>
+<h2 class="text-center mt-5" style="color: #013220;">About the Developer</h2>
+<section class="about-me-section py-5" style="background-color: #f4f4f4;">
+     <div class="container">
+         <div class="row align-items-center">
+             <!-- Image Section -->
+             <div class="col-md-5 text-center">
+                 <img src="{{url_for('static', filename='img/me.png')}}" alt="Sheikh Firdous Fatima" 
+                      class="img-fluid rounded-circle shadow" style="width: auto; height: 400px; object-fit: cover;">
+             </div>
+ 
+             <!-- About Me Section -->
+             <div class="col-md-7">
+                 <h2 class="fw-bold" style="color: #013220;">Sheikh Firdous Fatima</h2>
+                 <p class="mt-3" style="color:#000000; font-size: 1.1rem; line-height: 1.8;">
+                     Hello! I am Sheikh Firdous Fatima, a passionate Python developer skilled in Flask, 
+                     SQL, Git, and other modern development tools. 
+                     With a deep interest in creating dynamic web applications, I thrive on designing 
+                     solutions that are both efficient and user-friendly.
+                 </p>
+                 <p style="color: #000000; font-size: 1.1rem; line-height: 1.8;">
+                     In this project, I utilized my expertise in Flask, a powerful Python web framework, 
+                     to design and develop a responsive e-commerce website. This platform focuses on delivering a seamless 
+                     shopping experience through intuitive design and robust functionality.
+                 </p>
+                 <p class="fw-bold" style="color: #013220; font-size: 1.2rem;">
+                     Connect with me:
+                 </p>
+                 <!-- Social Links -->
+                 <div class="d-flex gap-3">
+                     <a href="https://www.linkedin.com/in/sheikh-firdous-fatima-57569b24b/" target="_blank" style="color: #0e76a8; font-size: 1.5rem;" title="LinkedIn">
+                         <i class="fab fa-linkedin"></i>
+                     </a>
+                     <a href="https://github.com/firdousfatima131004" target="_blank" style="color: #333; font-size: 1.5rem;" title="GitHub">
+                         <i class="fab fa-github"></i>
+                     </a>
+                     <a href="https://firdousfatima131004.github.io/firdousfatima131004github.io/" target="_blank" style="color: #013220; font-size: 1.5rem;" title="Website">
+                         <i class="fas fa-globe"></i>
+                     </a>
+                 </div>
+             </div>
+         </div>
      </div>
+ </section>
+ 
+ 
+ 
+
+ 
 
 
 
 
-     <!-- footer -->
-     <footer class="bg-dark text-light pt-5 pb-3 mt-4" style="background-color: #161212;">
-          <div class="container">
-               <div class="row">
-                    <!-- About Section -->
-                    <div class="col-md-4">
-                         <h5 class="text-uppercase mb-4" style="color: #e2c044;">About Us</h5>
-                         <p>
-                              Welcome to Watch Store, your ultimate destination for luxury and stylish timepieces.
-                              Explore our exclusive collection and find the perfect watch to complement your style.
-                         </p>
-                    </div>
-                    <!-- Quick Links Section -->
-                    <div class="col-md-4">
-                         <h5 class="text-uppercase mb-4" style="color: #e2c044;">Quick Links</h5>
-                         <ul class="list-unstyled">
-                              <li><a href="/" class="text-light text-decoration-none"><i
-                                             class="fas fa-angle-right me-2"></i>Home</a></li>
-                              <li><a href="/about" class="text-light text-decoration-none"><i
-                                             class="fas fa-angle-right me-2"></i>About Us</a></li>
-                              <li><a href="/show_product/" class="text-light text-decoration-none"><i
-                                             class="fas fa-angle-right me-2"></i>Products</a></li>
-                              <li><a href="/blog" class="text-light text-decoration-none"><i
-                                             class="fas fa-angle-right me-2"></i>Blog</a></li>
-                              <li><a href="/contact" class="text-light text-decoration-none"><i
-                                             class="fas fa-angle-right me-2"></i>Contact Us</a></li>
-                         </ul>
-                    </div>
-                    <!-- Contact Section -->
-                    <div class="col-md-4">
-                         <h5 class="text-uppercase mb-4" style="color: #e2c044;">Contact Us</h5>
-                         <p><i class="fas fa-map-marker-alt me-2"></i>123 Watch Avenue, New York, NY</p>
-                         <p><i class="fas fa-phone me-2"></i>+1 234 567 890</p>
-                         <p><i class="fas fa-envelope me-2"></i>info@watchstore.com</p>
-                         <div class="social-icons mt-3">
-                              <a href="#" class="text-light me-3"><i class="fab fa-facebook-f"></i></a>
-                              <a href="#" class="text-light me-3"><i class="fab fa-twitter"></i></a>
-                              <a href="#" class="text-light me-3"><i class="fab fa-instagram"></i></a>
-                              <a href="#" class="text-light"><i class="fab fa-linkedin-in"></i></a>
-                         </div>
-                    </div>
-               </div>
-               <hr class="text-light">
-               <div class="text-center">
-                    <p class="mb-0">&copy; 2025 Watch Store. All Rights Reserved.</p>
-               </div>
-          </div>
-     </footer>
-
-
-     <!-- Bootstrap JS -->
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-          crossorigin="anonymous"></script>
-</body>
-
-</html>
+{% endblock abc%}
