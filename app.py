@@ -319,11 +319,27 @@ def dod(y):
             db_session.rollback()
             return render_template('update_blog.html', error=f"An error occurred: {str(e)}", username=username, data=dataa)
 
+#product detail page
+@app.route('/product_detail/<int:i>')
+def  detail(i):
+    data = db_session.query(Product).get(i)
+    return render_template('product_detail.html', mydata = data)
+
+
+#forgot password
+@app.route('/forgot-password/')
+def forgot_email():
+    return render_template('email.html')
 
 
 
 
- 
+
+
+
+
+
+
 #add to cart
 @app.route('/add_to_cart/<int:product_id>', methods=['POST'])
 def add_to_cart(product_id):
@@ -381,22 +397,9 @@ def update_quantity(item_id):
         db_session.commit()
     return redirect(url_for('view_cart'))  # Updated to 'view_cart'
 
-#product detail page
-@app.route('/product_detail/<int:i>')
-def  detail(i):
-    data = db_session.query(Product).get(i)
-    return render_template('product_detail.html', mydata = data)
 
 
-#forgot password
-@app.route('/forgot-password/')
-def forgot_email():
-    return render_template('email.html')
 
-
-@app.route('/aaa/')
-def aa():
-    return render_template('admin_base.html')
 
      
      

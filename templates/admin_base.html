@@ -20,6 +20,7 @@
     <!-- css link-->
     <link rel="stylesheet" href="{{url_for('static' ,filename ='css/admin_style.css')}}">
     <link rel="stylesheet" href="{{url_for('static' ,filename ='css/add_product.css')}}">
+    <link rel="stylesheet" href="{{url_for('static' ,filename ='css/add_blog.css')}}">
     
 </head>
 
@@ -30,19 +31,19 @@
     </div>
 
     <!-- Navbar -->
-    <nav class="navbar-container" id="navbar">
+    <nav class="navbar-container navbar-light" id="navbar">
         <div class="navbar-logo">
             <img src="{{url_for('static', filename='img/logoFinal.png')}}" alt="Logo">
         </div>
         <div class="divider"></div>
         <ul class="nav-links">
-            <li><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
-            <li><a href="#"><i class="fas fa-users"></i> Users</a></li>
+            <li><a href="/admin/"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="/view_user/"><i class="fas fa-users"></i> Users</a></li>
             <li><a href="/addProduct/"><i class="fas fa-plus"></i> Add Products</a></li>
-            <li><a href="#"><i class="fas fa-blog"></i> Add Blog</a></li>
-            <li><a href="#"><i class="fas fa-box"></i> Products</a></li>
+            <li><a href="/blog/"><i class="fas fa-blog"></i> Add Blog</a></li>
+            <li><a href="/product/"><i class="fas fa-box"></i> Products</a></li>
             <li><a href="#"><i class="fas fa-shipping-fast"></i> Orders / Shipping</a></li>
-            <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            <li><a href="/logout/"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </ul>
     </nav>
 

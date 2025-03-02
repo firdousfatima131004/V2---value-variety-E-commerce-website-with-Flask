@@ -51,11 +51,61 @@
     
     <p style="text-align: right; font-size: 20px; font-weight: bold;">Total: Rs.{{ total }}</p>
     {% if total != 0%}
-    <p style="text-align: right;"><button  style="background-color: #013220; color: #ffffff; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-weight: bold;">Pay Now</button></p>
+    <a href="{{ url_for('shipping', id=user_id) }}" style="text-align: right;">
+        <button style="background-color: #013220; color: #ffffff; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-weight: bold; text-align: right;">Place order</button>
+    </a>
+    
+    
+    
+    
+    <!-- <p style="text-align: right;"><button  style="background-color: #013220; color: #ffffff; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-weight: bold;" id="rzp-button1">Pay Now</button></p> -->
     {% endif %}
     {% endif %}
 </section>
 
 
 
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    var options = {
+        "key": "rzp_test_qBHckndkmksNNr", // Your Razorpay test key
+        "amount": "{{ total * 100 }}", // Convert total to paise
+        "currency": "INR",
+        "name": "Acme Corp",
+        "description": "Test Transaction",
+        "image": "https://example.com/your_logo",
+        "order_id": "{{ order_id }}", // Dynamic order ID passed from backend
+        "handler": function (response){
+            alert(response.razorpay_payment_id);
+            alert(response.razorpay_order_id);
+            alert(response.razorpay_signature);
+        },
+        "prefill": {
+            "name": "{{ username }}",  // Pass logged-in username
+            "email": "user@example.com",  // Replace with dynamic email if available
+            "contact": "9000090000"  // Replace with dynamic contact if available
+        },
+        "notes": {
+            "address": "Razorpay Corporate Office"
+        },
+        "theme": {
+            "color": "#3399cc"
+        }
+    };
+    
+var rzp1 = new Razorpay(options);
+rzp1.on('payment.failed', function (response){
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+});
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+</script>
 {% endblock abc%}

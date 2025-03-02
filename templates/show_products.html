@@ -19,7 +19,9 @@
                          <p class="card-text" style="color: #000000;">{{ product.productDesc }}</p>
                          <p class="card-text" style="color: #000000;"><strong>Price:</strong> ₹{{ product.productPrice }}</p>
                          {% if role != 'admin' %}
-                         <form action="{{ url_for('add_to_cart', product_id=product.id) }}" method="POST"
+                         <!-- <form action="{{ url_for('add_to_cart', product_id=product.id) }}" method="POST"
+                              class="mb-3"> -->
+                         <form action="#" method="POST"
                               class="mb-3">
                               <input type="number" name="quantity" value="1" min="1" class="form-control mb-2">
                               <button type="submit" class="btn btn-warning w-100">Add to Cart</button>
@@ -29,7 +31,7 @@
                          {% if role == 'admin' %}
                          <div class="mt-3">
                               <a href="/update/{{ product.id }}" class="btn btn-info w-100 mb-2">Update</a>
-                              <a href="/delete/{{ product.id }}" class="btn btn-danger w-100">Delete</a>
+                              <a href="/delete/{{ product.id }}" class="btn w-100" style="background-color:#dc3545;">Delete</a>
                          </div>
                          {% endif %}
                     </div>
